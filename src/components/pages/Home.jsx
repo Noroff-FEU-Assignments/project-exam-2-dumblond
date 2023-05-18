@@ -1,11 +1,11 @@
-import React from "react";
+import { Container } from "react-bootstrap";
+import Header from "../common/Header";
 
 function Home() {
   return (
-    <div>
-      Home
-      <h1>Home</h1>
-    </div>
+    <Container>
+      <Header title="Latest posts" />
+    </Container>
   );
 }
 
