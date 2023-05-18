@@ -7,7 +7,7 @@
       }
 
       .cls-2 {
-        fill: #fa25a9;
+        fill: #8e44ad;
         font-family: Sigmar-Regular, Sigmar;
         font-size: 12px;
         stroke: #000;
@@ -26,9 +26,7 @@
     </style>
   </defs>
   <g id="Layer_1-2" data-name="Layer 1">
-    <g>
-      <rect class="cls-4" width="21" height="20" rx="2.52" ry="2.52"/>
-      <text class="cls-2" transform="translate(1.79 13.84)"><tspan x="0" y="0">nb </tspan><tspan class="cls-1" x="20.24" y="0">S</tspan><tspan class="cls-3" x="27.42" y="0">OME</tspan></text>
-    </g>
+    <rect class="cls-4" width="21" height="20" rx="2.52" ry="2.52"/>
+    <text class="cls-2" transform="translate(1.79 13.84)"><tspan x="0" y="0">nb </tspan><tspan class="cls-1" x="20.24" y="0">S</tspan><tspan class="cls-3" x="27.42" y="0">OME</tspan></text>
   </g>
 </svg>
