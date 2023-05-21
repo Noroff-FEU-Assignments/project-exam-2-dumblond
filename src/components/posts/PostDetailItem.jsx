@@ -14,18 +14,20 @@ function PostDetailItem({ post }) {
       <Card>
         <Card.Img variant="top" src={banner}></Card.Img>
         <Card.Body>
+          <div className="d-flex justify-content-between">
+            <Card.Img
+              src={avatar}
+              alt={`${post.author.name}'s avatar`}
+            ></Card.Img>
+            <CloseButton
+              aria-label="Close detail page"
+              className="mb-3"
+              onClick={function () {
+                navigate("/");
+              }}
+            />
+          </div>
           <Card.Title>{post.title}</Card.Title>
-          <CloseButton
-            aria-label="Close detail page"
-            className="mb-3"
-            onClick={function () {
-              navigate("/");
-            }}
-          />
-          <Card.Img
-            src={avatar}
-            alt={`${post.author.name}'s avatar`}
-          ></Card.Img>
           <p> {post.body}</p>
           <Image fluid src={post.media}></Image>
           <p> {post.author.name}</p>

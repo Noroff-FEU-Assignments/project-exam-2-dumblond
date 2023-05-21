@@ -18,7 +18,13 @@ function Post({ post }) {
           <Card.Title>{post.title}</Card.Title>
           <p> {post.body}</p>
           <Image fluid src={post.media}></Image>
-          <Link to={`/detail/${post.id}`} className="stretched-link" />
+          <Link
+            to={`/detail/${post.id}`}
+            className="btn btn-primary text-light"
+            type="button"
+          >
+            View post
+          </Link>
         </Card.Body>
       </Card>
     </Col>
@@ -30,6 +36,7 @@ Post.propTypes = {
     title: PropTypes.string,
     id: PropTypes.number,
     body: PropTypes.string,
+    media: PropTypes.string,
     author: PropTypes.shape({
       name: PropTypes.string,
       avatar: PropTypes.string,
