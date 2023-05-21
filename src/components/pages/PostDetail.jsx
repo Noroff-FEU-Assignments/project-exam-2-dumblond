@@ -1,21 +1,30 @@
-import { Container, Row } from "react-bootstrap";
-import Header from "../common/Header";
 import { useContext, useEffect, useState } from "react";
 import { API } from "../../constants/api";
 import axios from "axios";
 import Loading from "../common/Loading";
-import DisplayMessage from "../common/DisplayMessage";
-import Post from "../posts/Post";
 import AuthContext from "../../context/AuthContext";
+import { useNavigate, useParams } from "react-router-dom";
+import PostDetailItem from "../posts/PostDetailItem";
+import DisplayMessage from "../common/DisplayMessage";
 
-function Home() {
-  const [posts, setPosts] = useState([]);
+function PostDetail() {
+  const [post, setPost] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [auth] = useContext(AuthContext);
 
+  let navigate = useNavigate();
+
+  const { param } = useParams();
+
+  if (!param) {
+    navigate("/");
+  }
+
+  const URL =
+    API + `posts/${param}?_reactions=true&_author=true&_comments=true`;
+
   useEffect(function () {
-    const URL = API + "posts?_reactions=true&_author=true&_comments=true";
     async function fetchData() {
       try {
         const response = await axios.get(URL, {
@@ -26,7 +35,7 @@ function Home() {
 
         console.log(response);
         if (response.status === 200) {
-          setPosts(response.data);
+          setPost(response.data);
         } else {
           setError("Faen!");
         }
@@ -47,18 +56,7 @@ function Home() {
     return <DisplayMessage messageType="danger" message="Helvete" />;
   }
 
-  return (
-    <>
-      <Container>
-        <Header title="Latest posts" />
-        <Row xs={1} md={3} className="g-4">
-          {posts.map(function (post) {
-            return <Post key={post.id} post={post} />;
-          })}
-        </Row>
-      </Container>
-    </>
-  );
+  return <PostDetailItem post={post} />;
 }
 
-export default Home;
+export default PostDetail;

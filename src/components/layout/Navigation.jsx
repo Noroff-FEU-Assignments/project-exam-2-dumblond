@@ -1,8 +1,17 @@
 import { Button, Container, Nav, Navbar } from "react-bootstrap";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.svg";
+import AuthContext from "../../context/AuthContext";
+import { useContext } from "react";
 
 function Navigation() {
+  const [auth, setAuth] = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  function logout() {
+    setAuth(null);
+    navigate("/");
+  }
   return (
     <Navbar bg="light" variant="light" expand="lg">
       <Container>
@@ -18,15 +27,21 @@ function Navigation() {
             <NavLink to="profiles" className="nav-link">
               Profiles
             </NavLink>
-            <>
-              <NavLink to="admin" className="nav-link">
-                My profile
+
+            {auth ? (
+              <>
+                <NavLink to="me" className="nav-link">
+                  My profile
+                </NavLink>
+                <Button variant="secondary" onClick={logout}>
+                  Log out
+                </Button>
+              </>
+            ) : (
+              <NavLink to="login" className="nav-link">
+                Log in
               </NavLink>
-              <Button variant="secondary">Log out</Button>
-            </>
-            <NavLink to="login" className="nav-link">
-              Log in
-            </NavLink>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>
