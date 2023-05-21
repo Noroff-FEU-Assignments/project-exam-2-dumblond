@@ -1,22 +1,23 @@
-import { Card, Col } from "react-bootstrap";
+import { Card, Col, Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import userAvatar from "../../assets/avatar.svg";
 
 function Post({ post }) {
+  const avatar = post.author.avatar ? post.author.avatar : userAvatar;
+
   return (
     <Col>
       <Card>
-        <Card.Img variant="top"></Card.Img>
         <Card.Body>
-          <Card.Title>{post.title}</Card.Title>
           <Card.Img
-            variant="top"
-            src={post.author.avatar}
+            src={avatar}
             alt={`${post.author.name}'s avatar`}
           ></Card.Img>
-          <h3> {post.body}</h3>
           <h3> {post.author.name}</h3>
-          <h3> {post.author.email}</h3>
+          <Card.Title>{post.title}</Card.Title>
+          <p> {post.body}</p>
+          <Image fluid src={post.media}></Image>
           <Link to={`/detail/${post.id}`} className="stretched-link" />
         </Card.Body>
       </Card>
