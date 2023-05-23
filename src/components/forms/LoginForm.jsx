@@ -73,7 +73,7 @@ function LoginForm() {
 
           <fieldset disabled={submitted}>
             <Form.Group className="my-3" controlId="email">
-              <FormLabel>Email</FormLabel>
+              <FormLabel>E-mail</FormLabel>
               <Form.Control placeholder="email" {...register("email")} />
               {errors.email && (
                 <ValidationError>{errors.email.message}</ValidationError>

@@ -4,6 +4,7 @@ import { Button, Container, Form } from "react-bootstrap";
 import {
   MAIL_VALIDATION,
   MINIMUM_PASSWORD_LENGTH,
+  NAME,
 } from "../../constants/Validation";
 import { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -15,7 +16,10 @@ import axios from "axios";
 import { registerAPI } from "../../constants/api";
 
 const schema = yup.object().shape({
-  name: yup.string().required("Please enter an name"),
+  name: yup
+    .string()
+    .required("Please enter an name")
+    .matches(NAME, "Your name must only contain letters and _"),
 
   email: yup
     .string()
@@ -98,7 +102,7 @@ function RegistrationForm() {
 
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Form.Group className="my-3" controlId="name">
-          <Form.Label>name</Form.Label>
+          <Form.Label>Name</Form.Label>
           <Form.Control placeholder="name" {...register("name")} />
           {errors.name && (
             <ValidationError>{errors.name.message}</ValidationError>
@@ -106,7 +110,7 @@ function RegistrationForm() {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="email">
-          <Form.Label>Email</Form.Label>
+          <Form.Label>E-mail</Form.Label>
           <Form.Control placeholder="email" {...register("email")} />
           {errors.email && (
             <ValidationError>{errors.email.message}</ValidationError>

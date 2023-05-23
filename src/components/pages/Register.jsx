@@ -4,7 +4,7 @@ import RegistrationForm from "../forms/RegistrationForm";
 function Login() {
   return (
     <>
-      <Header title="Log in" />
+      <Header title="Register form" />
       <RegistrationForm />
     </>
   );
