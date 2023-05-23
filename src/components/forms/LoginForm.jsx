@@ -3,19 +3,20 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import AuthContext from "../../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { loginAPI } from "../../constants/api";
 import { Button, Container, Form, FormLabel } from "react-bootstrap";
 import DisplayMessage from "../common/DisplayMessage";
 import ValidationError from "./ValidationError";
+import { MAIL_VALIDATION } from "../../constants/Validation";
 
 const schema = yup.object().shape({
   email: yup
     .string()
     .email()
     .matches(
-      /@(stud\.)?noroff.no/,
+      MAIL_VALIDATION,
       "The email must be a @noroff.no or @stud.noroff.no "
     )
     .required("Enter your email"),
@@ -39,7 +40,7 @@ function LoginForm() {
 
   useEffect(function () {
     if (auth) {
-      navigate("/");
+      //   navigate("/");
     }
   });
 
@@ -89,10 +90,13 @@ function LoginForm() {
                 <ValidationError>{errors.password.message}</ValidationError>
               )}
             </Form.Group>
-            <Button variant="primary" type="submit">
+            <Button variant="primary" type="submit" className="text-light">
               {submitted ? "You are login in" : "Login"}
             </Button>
           </fieldset>
+          <div className="p-4">
+            Dont have an account? <Link to="/register">Register here</Link>
+          </div>
         </Form>
       </Container>
     </>
