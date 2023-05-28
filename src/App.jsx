@@ -6,6 +6,7 @@ import Me from "./components/pages/Me";
 import Register from "./components/pages/Register";
 import { AuthProvider } from "./context/AuthContext";
 import PostDetail from "./components/pages/PostDetail";
+import LatestPosts from "./components/pages/LatestPosts";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route element={<Layout />}>
             <Route path="/" element={<Home />} />
+            <Route path="/latestposts" element={<LatestPosts />} />
             <Route path="/detail/:param" element={<PostDetail />} />
             <Route path="/login" element={<Login />} />
             <Route path="/me" element={<Me />} />

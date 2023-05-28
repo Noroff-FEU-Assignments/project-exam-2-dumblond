@@ -1,61 +1,32 @@
-import { Container, Row } from "react-bootstrap";
+import { Accordion, Container } from "react-bootstrap";
 import Header from "../common/Header";
-import { useContext, useEffect, useState } from "react";
-import { API } from "../../constants/api";
-import axios from "axios";
-import Loading from "../common/Loading";
-import DisplayMessage from "../common/DisplayMessage";
-import Post from "../posts/Post";
-import AuthContext from "../../context/AuthContext";
+import { Link } from "react-router-dom";
 
 function Home() {
-  const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [auth] = useContext(AuthContext);
-
-  useEffect(function () {
-    const URL = API + "posts?_reactions=true&_author=true&_comments=true";
-    async function fetchData() {
-      try {
-        const response = await axios.get(URL, {
-          headers: {
-            Authorization: `Bearer ${auth.accessToken}`,
-          },
-        });
-
-        console.log(response);
-        if (response.status === 200) {
-          setPosts(response.data);
-        } else {
-          setError("Faen!");
-        }
-      } catch (error) {
-        setError(error.toString());
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchData();
-  }, []);
-
-  if (loading) {
-    return <Loading animation="border" />;
-  }
-
-  if (error) {
-    return <DisplayMessage messageType="danger" message="Helvete" />;
-  }
-
   return (
     <>
       <Container>
-        <Header title="Latest posts" />
-        <Row xs={1} md={3} className="g-4">
-          {posts.map(function (post) {
-            return <Post key={post.id} post={post} />;
-          })}
-        </Row>
+        <Header title="Welcome" />
+        <h2 className="p-2">
+          This is Noroff social media page. Here you can get to know other
+          students and discuss.
+        </h2>
+        <Accordion defaultActiveKey={["0", "1"]} alwaysOpen>
+          <Accordion.Item eventKey="0">
+            <Accordion.Header>I have an account</Accordion.Header>
+            <Accordion.Body>
+              Welcome back! Go to the login sight here{" "}
+              <Link to="/login">Login here</Link>
+            </Accordion.Body>
+          </Accordion.Item>
+          <Accordion.Item eventKey="1">
+            <Accordion.Header>Do not have an account</Accordion.Header>
+            <Accordion.Body>
+              Welcome to nb SOME. You need to register to see the sight. Go to
+              the register sight here <Link to="/register">Register here</Link>
+            </Accordion.Body>
+          </Accordion.Item>
+        </Accordion>
       </Container>
     </>
   );

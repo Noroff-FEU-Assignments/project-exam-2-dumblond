@@ -15,21 +15,20 @@ function Navigation() {
   return (
     <Navbar bg="light" variant="light" expand="lg">
       <Container>
-        <Link className="navbar-brand" to="/">
+        <Link className="navbar-brand" to={auth ? "latestposts" : "/"}>
           <img src={logo} alt="" height="50" />
         </Link>
         <Navbar.Toggle aria-controls="main-navigation" />
         <Navbar.Collapse id="main-navigation">
           <Nav className="ms-auto">
-            <NavLink to="/" className="nav-link">
-              Latest posts
-            </NavLink>
-            <NavLink to="profiles" className="nav-link">
-              Profiles
-            </NavLink>
-
             {auth ? (
               <>
+                <NavLink to="latestposts" className="nav-link">
+                  Latest Posts
+                </NavLink>
+                <NavLink to="profiles" className="nav-link">
+                  Profiles
+                </NavLink>
                 <NavLink to="me" className="nav-link">
                   My profile
                 </NavLink>
@@ -38,9 +37,17 @@ function Navigation() {
                 </Button>
               </>
             ) : (
-              <NavLink to="login" className="nav-link">
-                Log in
-              </NavLink>
+              <>
+                <NavLink to="/" className="nav-link">
+                  Home
+                </NavLink>
+                <NavLink to="login" className="nav-link">
+                  Log in
+                </NavLink>
+                <NavLink to="register" className="nav-link">
+                  Register form
+                </NavLink>
+              </>
             )}
           </Nav>
         </Navbar.Collapse>
