@@ -5,7 +5,7 @@ import { useState } from "react";
 import Loading from "../common/Loading";
 import DisplayMessage from "../common/DisplayMessage";
 import { profileAPI } from "../../constants/api";
-import MyProfileItem from "../posts/Profile";
+import Profile from "../posts/Profile";
 
 function Me() {
   const [auth] = useContext(AuthContext);
@@ -47,7 +47,7 @@ function Me() {
 
   return (
     <>
-      <MyProfileItem profile={profile} />
+      <Profile profile={profile} />
     </>
   );
 }
