@@ -6,7 +6,7 @@ function Home() {
   return (
     <>
       <Container>
-        <Header title="Welcome" />
+        <Header title="Welcome to nb SOME" />
         <h2 className="p-2">
           This is Noroff social media page. Here you can get to know other
           students and discuss.
