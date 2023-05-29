@@ -1,21 +1,22 @@
-import { Container, Row } from "react-bootstrap";
+import { useContext, useEffect } from "react";
 import Header from "../common/Header";
-import { useContext, useEffect, useState } from "react";
-import { API } from "../../constants/api";
+import AuthContext from "../../context/AuthContext";
 import axios from "axios";
+import { useState } from "react";
+import { profileAPI } from "../../constants/api";
 import Loading from "../common/Loading";
 import DisplayMessage from "../common/DisplayMessage";
-import Posts from "../posts/Posts";
-import AuthContext from "../../context/AuthContext";
+import { Container, Row } from "react-bootstrap";
+import Profile from "../posts/Profile";
 
-function LatestPosts() {
-  const [posts, setPosts] = useState([]);
+function Profiles() {
+  const [auth] = useContext(AuthContext);
+  const [profiles, setProfiles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [auth] = useContext(AuthContext);
 
   useEffect(function () {
-    const URL = API + "posts?_reactions=true&_author=true&_comments=true";
+    const URL = profileAPI;
     async function fetchData() {
       try {
         const response = await axios.get(URL, {
@@ -25,7 +26,7 @@ function LatestPosts() {
         });
 
         if (response.status === 200) {
-          setPosts(response.data);
+          setProfiles(response.data);
         } else {
           setError("Faen!");
         }
@@ -49,10 +50,16 @@ function LatestPosts() {
   return (
     <>
       <Container>
-        <Header title="Latest posts" />
+        <Header title="Profiles" />
         <Row xs={1} md={2} className="g-4">
-          {posts.map(function (post) {
-            return <Posts key={post.id} post={post} />;
+          {profiles.map(function (profile) {
+            return (
+              <Profile
+                key={profile.name}
+                profile={profile}
+                displayButton={true}
+              />
+            );
           })}
         </Row>
       </Container>
@@ -60,4 +67,4 @@ function LatestPosts() {
   );
 }
 
-export default LatestPosts;
+export default Profiles;

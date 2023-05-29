@@ -7,6 +7,8 @@ import Register from "./components/pages/Register";
 import { AuthProvider } from "./context/AuthContext";
 import PostDetail from "./components/pages/PostDetail";
 import LatestPosts from "./components/pages/LatestPosts";
+import Profiles from "./components/pages/Profiles";
+import ProfileDetail from "./components/pages/ProfileDetail";
 
 function App() {
   return (
@@ -15,11 +17,13 @@ function App() {
         <Routes>
           <Route element={<Layout />}>
             <Route path="/" element={<Home />} />
-            <Route path="/latestposts" element={<LatestPosts />} />
-            <Route path="/detail/:param" element={<PostDetail />} />
+            <Route path="/posts" element={<LatestPosts />} />
+            <Route path="/post/:param" element={<PostDetail />} />
             <Route path="/login" element={<Login />} />
             <Route path="/me" element={<Me />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/profiles" element={<Profiles />} />
+            <Route path="/profile/:param" element={<ProfileDetail />} />
           </Route>
         </Routes>
       </BrowserRouter>

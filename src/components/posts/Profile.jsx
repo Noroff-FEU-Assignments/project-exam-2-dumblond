@@ -1,13 +1,16 @@
-import { Card, CloseButton, Col, Image } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { Card, Col, Image } from "react-bootstrap";
 import PropTypes from "prop-types";
 import userAvatar from "../../assets/avatar.svg";
 import userBanner from "../../assets/banner.svg";
+import { Link } from "react-router-dom";
+import { useContext } from "react";
+import AuthContext from "../../context/AuthContext";
+import EditProfile from "../forms/EditProfile";
 
-function Profile({ profile }) {
+function Profile({ profile, displayButton, getProfile }) {
+  const [auth] = useContext(AuthContext);
   const avatar = profile.avatar ? profile.avatar : userAvatar;
   const banner = profile.banner ? profile.banner : userBanner;
-  const navigate = useNavigate();
 
   return (
     <Col>
@@ -16,19 +19,24 @@ function Profile({ profile }) {
         <Card.Body>
           <div className="d-flex justify-content-between">
             <Card.Img src={avatar} alt={`${profile.name}'s avatar`}></Card.Img>
-            <CloseButton
-              aria-label="Close detail page"
-              className="mb-3"
-              onClick={function () {
-                navigate("/");
-              }}
-            />
           </div>
           <Card.Title>{profile.title}</Card.Title>
           <p> {profile.body}</p>
           <Image fluid src={profile.media}></Image>
           <p> {profile.name}</p>
           <p> {profile.email}</p>
+          {displayButton && (
+            <Link
+              to={`/profile/${profile.name}`}
+              className="btn btn-primary text-light my-3"
+              type="button"
+            >
+              View profile
+            </Link>
+          )}
+          {auth.name === profile.name && (
+            <EditProfile profile={profile} getProfile={getProfile} />
+          )}
         </Card.Body>
       </Card>
     </Col>
@@ -46,6 +54,8 @@ Profile.propTypes = {
     email: PropTypes.string,
     banner: PropTypes.string,
   }),
+  displayButton: PropTypes.bool,
+  getProfile: PropTypes.func,
 };
 
 export default Profile;

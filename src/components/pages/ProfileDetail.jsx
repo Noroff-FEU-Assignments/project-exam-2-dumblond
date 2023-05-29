@@ -1,30 +1,24 @@
-import { useContext, useEffect, useState } from "react";
-import { API } from "../../constants/api";
-import axios from "axios";
-import Loading from "../common/Loading";
+import { useContext, useEffect } from "react";
 import AuthContext from "../../context/AuthContext";
-import { useNavigate, useParams } from "react-router-dom";
-import PostDetailItem from "../posts/Post";
+import axios from "axios";
+import { useState } from "react";
+import Loading from "../common/Loading";
 import DisplayMessage from "../common/DisplayMessage";
+import { profileAPI } from "../../constants/api";
+import Profile from "../posts/Profile";
+import { Breadcrumb } from "react-bootstrap";
+import { useParams } from "react-router-dom";
 
-function PostDetail() {
-  const [post, setPost] = useState([]);
+function ProfileDetail() {
+  const [auth] = useContext(AuthContext);
+  const [profile, setProfile] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [auth] = useContext(AuthContext);
-
-  let navigate = useNavigate();
 
   const { param } = useParams();
 
-  if (!param) {
-    navigate("/");
-  }
-
-  const URL =
-    API + `posts/${param}?_reactions=true&_author=true&_comments=true`;
-
   useEffect(function () {
+    const URL = profileAPI + "/" + `${param}`;
     async function fetchData() {
       try {
         const response = await axios.get(URL, {
@@ -34,7 +28,7 @@ function PostDetail() {
         });
 
         if (response.status === 200) {
-          setPost(response.data);
+          setProfile(response.data);
         } else {
           setError("Faen!");
         }
@@ -55,7 +49,16 @@ function PostDetail() {
     return <DisplayMessage messageType="danger" message="Helvete" />;
   }
 
-  return <PostDetailItem post={post} />;
+  return (
+    <>
+      <Breadcrumb className="pt-3">
+        <Breadcrumb.Item href="/profiles">Profiles</Breadcrumb.Item>
+        <Breadcrumb.Item active>{profile.name}`s profile</Breadcrumb.Item>
+      </Breadcrumb>
+
+      <Profile profile={profile} />
+    </>
+  );
 }
 
-export default PostDetail;
+export default ProfileDetail;

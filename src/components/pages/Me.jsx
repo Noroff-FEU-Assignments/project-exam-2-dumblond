@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useCallback, useContext, useEffect } from "react";
 import AuthContext from "../../context/AuthContext";
 import axios from "axios";
 import { useState } from "react";
@@ -6,15 +6,16 @@ import Loading from "../common/Loading";
 import DisplayMessage from "../common/DisplayMessage";
 import { profileAPI } from "../../constants/api";
 import Profile from "../posts/Profile";
+import { Breadcrumb } from "react-bootstrap";
 
 function Me() {
   const [auth] = useContext(AuthContext);
-  const [profile, setMyProfile] = useState([]);
+  const [profile, setProfile] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const URL = profileAPI + "/" + auth.name;
 
-  useEffect(function () {
-    const URL = profileAPI + auth.name;
+  const getProfile = useCallback(async function () {
     async function fetchData() {
       try {
         const response = await axios.get(URL, {
@@ -24,7 +25,8 @@ function Me() {
         });
 
         if (response.status === 200) {
-          setMyProfile(response.data);
+          setProfile(response.data);
+          console.log(response.data);
         } else {
           setError("Faen!");
         }
@@ -37,6 +39,10 @@ function Me() {
     fetchData();
   }, []);
 
+  useEffect(function () {
+    getProfile();
+  }, []);
+
   if (loading) {
     return <Loading animation="border" />;
   }
@@ -47,7 +53,12 @@ function Me() {
 
   return (
     <>
-      <Profile profile={profile} />
+      <Breadcrumb className="pt-3">
+        <Breadcrumb.Item href="/profiles">Profiles</Breadcrumb.Item>
+        <Breadcrumb.Item active>My profile</Breadcrumb.Item>
+      </Breadcrumb>
+
+      <Profile profile={profile} getProfile={getProfile} />
     </>
   );
 }

@@ -15,7 +15,7 @@ function Navigation() {
   return (
     <Navbar bg="light" variant="light" expand="lg">
       <Container>
-        <Link className="navbar-brand" to={auth ? "latestposts" : "/"}>
+        <Link className="navbar-brand" to={auth ? "posts" : "/"}>
           <img src={logo} alt="" height="50" />
         </Link>
         <Navbar.Toggle aria-controls="main-navigation" />
@@ -23,7 +23,7 @@ function Navigation() {
           <Nav className="ms-auto">
             {auth ? (
               <>
-                <NavLink to="latestposts" className="nav-link">
+                <NavLink to="posts" className="nav-link">
                   Latest Posts
                 </NavLink>
                 <NavLink to="profiles" className="nav-link">
