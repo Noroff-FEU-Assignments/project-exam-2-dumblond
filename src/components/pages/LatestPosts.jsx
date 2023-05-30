@@ -8,7 +8,6 @@ import DisplayMessage from "../common/DisplayMessage";
 import Posts from "../posts/Posts";
 import AuthContext from "../../context/AuthContext";
 import { Link } from "react-router-dom";
-import MakePost from "../forms/MakePost";
 
 function LatestPosts() {
   const [posts, setPosts] = useState([]);
