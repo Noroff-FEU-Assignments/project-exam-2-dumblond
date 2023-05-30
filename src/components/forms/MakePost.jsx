@@ -10,6 +10,7 @@ import axios from "axios";
 import PropTypes from "prop-types";
 import Header from "../common/Header";
 import { MAXIMUM_BODY_LENGTH } from "../../constants/Validation";
+import { useNavigate } from "react-router-dom";
 import DisplayMessage from "../common/DisplayMessage";
 
 const schema = yup.object().shape({
@@ -24,10 +25,12 @@ const schema = yup.object().shape({
   media: yup.string().url(),
 });
 
-function MakePost({ post, getPostId }) {
+function MakePost() {
   const [submitted, setSubmitted] = useState(false);
-  const [postError, setError] = useState(null);
+  const [postError, setPostError] = useState(null);
   const URL = API + "posts";
+
+  const navigate = useNavigate();
 
   const {
     register,
@@ -41,24 +44,27 @@ function MakePost({ post, getPostId }) {
 
   async function submitForm(data) {
     setSubmitted(true);
-    setError(null);
+    setPostError(null);
 
     try {
-      const response = await axios.post(URL, data, {
+      await axios.post(URL, data, {
         headers: {
           Authorization: `Bearer ${auth.accessToken}`,
         },
       });
-      console.log(URL);
-      getPostId();
       navigate("/posts");
     } catch (error) {
       console.log("error", error);
-      setError(error.toString());
+      setPostError(error.toString());
     } finally {
       setSubmitted(false);
     }
   }
+
+  if (postError) {
+    return <DisplayMessage message={postError} messageType="danger" />;
+  }
+
   return (
     <>
       <Container>
@@ -73,7 +79,7 @@ function MakePost({ post, getPostId }) {
             <Form.Label>Title</Form.Label>
             <Form.Control
               type="text"
-              placeholder="title"
+              placeholder="Title"
               {...register("title")}
             />
             {errors.title && (
@@ -86,7 +92,7 @@ function MakePost({ post, getPostId }) {
               type="text"
               as="textarea"
               rows={8}
-              placeholder="body"
+              placeholder="Body (max 280 characters)"
               {...register("body")}
             />
             {errors.body && (

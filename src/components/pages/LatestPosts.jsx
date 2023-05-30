@@ -15,29 +15,32 @@ function LatestPosts() {
   const [error, setError] = useState(null);
   const [auth] = useContext(AuthContext);
 
-  useEffect(function () {
-    const URL = API + "posts?_reactions=true&_author=true&_comments=true";
-    async function fetchData() {
-      try {
-        const response = await axios.get(URL, {
-          headers: {
-            Authorization: `Bearer ${auth.accessToken}`,
-          },
-        });
+  useEffect(
+    function () {
+      const URL = API + "posts?_reactions=true&_author=true&_comments=true";
+      async function fetchData() {
+        try {
+          const response = await axios.get(URL, {
+            headers: {
+              Authorization: `Bearer ${auth.accessToken}`,
+            },
+          });
 
-        if (response.status === 200) {
-          setPosts(response.data);
-        } else {
-          setError("Faen!");
+          if (response.status === 200) {
+            setPosts(response.data);
+          } else {
+            setError("Faen!");
+          }
+        } catch (error) {
+          setError(error.toString());
+        } finally {
+          setLoading(false);
         }
-      } catch (error) {
-        setError(error.toString());
-      } finally {
-        setLoading(false);
       }
-    }
-    fetchData();
-  }, []);
+      fetchData();
+    },
+    [auth.accessToken]
+  );
 
   if (loading) {
     return <Loading animation="border" />;
@@ -52,9 +55,9 @@ function LatestPosts() {
       <Container>
         <Header title="Latest posts" />
         <Row>
-          <Col className="d-grid col-10 mx-auto">
+          <Col className="d-grid col-12 col-md-8 mx-auto">
             <Link
-              to={"/makepost"}
+              to="/makepost"
               className="btn btn-primary text-light m-3"
               type="button"
             >

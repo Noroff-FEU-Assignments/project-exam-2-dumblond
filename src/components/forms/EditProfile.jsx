@@ -11,6 +11,7 @@ import { profileAPI } from "../../constants/api";
 import AuthContext from "../../context/AuthContext";
 
 import PropTypes from "prop-types";
+import DisplayMessage from "../common/DisplayMessage";
 
 const schema = yup.object().shape({
   avatar: yup.string().url(),
@@ -20,7 +21,7 @@ const schema = yup.object().shape({
 function EditProfile({ profile, getProfile }) {
   const [auth] = useContext(AuthContext);
   const [submitted, setSubmitted] = useState(false);
-  const [loginError, setLoginError] = useState(null);
+  const [error, setError] = useState(null);
   const [show, setShow] = useState(false);
   const URL = profileAPI + "/" + auth.name + "/media";
 
@@ -41,10 +42,10 @@ function EditProfile({ profile, getProfile }) {
 
   async function submitForm(data) {
     setSubmitted(true);
-    setLoginError(null);
+    setError(null);
 
     try {
-      const response = await axios.put(URL, data, {
+      await axios.put(URL, data, {
         headers: {
           Authorization: `Bearer ${auth.accessToken}`,
         },
@@ -53,10 +54,14 @@ function EditProfile({ profile, getProfile }) {
       setShow(false);
     } catch (error) {
       console.log("error", error);
-      setLoginError(error.toString());
+      setError(error.toString());
     } finally {
       setSubmitted(false);
     }
+  }
+
+  if (error) {
+    return <DisplayMessage messageType="danger" message={error} />;
   }
 
   return (
@@ -71,34 +76,36 @@ function EditProfile({ profile, getProfile }) {
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={handleSubmit(submitForm)}>
-            <Form.Group className="mb-3" controlId="avatar">
-              <Form.Label>Avatar url</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="https://..."
-                {...register("avatar")}
-              />
-              {errors.avatar && (
-                <ValidationError>{errors.avatar.message}</ValidationError>
-              )}
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="banner">
-              <Form.Label>Banner url</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="https://..."
-                {...register("banner")}
-              />
-              {errors.banner && (
-                <ValidationError>{errors.banner.message}</ValidationError>
-              )}
-            </Form.Group>
-            <Button variant="secondary" onClick={handleClose} className="m-2">
-              Close
-            </Button>
-            <Button variant="primary" type="submit" className="m-2">
-              Save Changes
-            </Button>
+            <fieldset disabled={submitted}>
+              <Form.Group className="mb-3" controlId="avatar">
+                <Form.Label>Avatar url</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="https://..."
+                  {...register("avatar")}
+                />
+                {errors.avatar && (
+                  <ValidationError>{errors.avatar.message}</ValidationError>
+                )}
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="banner">
+                <Form.Label>Banner url</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="https://..."
+                  {...register("banner")}
+                />
+                {errors.banner && (
+                  <ValidationError>{errors.banner.message}</ValidationError>
+                )}
+              </Form.Group>
+              <Button variant="secondary" onClick={handleClose} className="m-2">
+                Close
+              </Button>
+              <Button variant="primary" type="submit" className="m-2">
+                Save Changes
+              </Button>
+            </fieldset>
           </Form>
         </Modal.Body>
       </Modal>
@@ -110,4 +117,8 @@ export default EditProfile;
 
 EditProfile.propTypes = {
   getProfile: PropTypes.func,
+  profile: PropTypes.shape({
+    avatar: PropTypes.string,
+    banner: PropTypes.string,
+  }),
 };

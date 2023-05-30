@@ -34,6 +34,7 @@ function PostDetail() {
         });
 
         if (response.status === 200) {
+          console.log(response.data);
           setPost(response.data);
         } else {
           setError("Faen!");

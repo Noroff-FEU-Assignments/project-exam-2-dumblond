@@ -1,4 +1,4 @@
-import { Card, Col, Image } from "react-bootstrap";
+import { Card, Col } from "react-bootstrap";
 import PropTypes from "prop-types";
 import userAvatar from "../../assets/avatar.svg";
 import userBanner from "../../assets/banner.svg";
@@ -20,9 +20,6 @@ function Profile({ profile, displayButton, getProfile }) {
           <div className="d-flex justify-content-between">
             <Card.Img src={avatar} alt={`${profile.name}'s avatar`}></Card.Img>
           </div>
-          <Card.Title>{profile.title}</Card.Title>
-          <p> {profile.body}</p>
-          <Image fluid src={profile.media}></Image>
           <p> {profile.name}</p>
           <p> {profile.email}</p>
           {displayButton && (
@@ -45,14 +42,11 @@ function Profile({ profile, displayButton, getProfile }) {
 
 Profile.propTypes = {
   profile: PropTypes.shape({
-    title: PropTypes.string,
-    id: PropTypes.number,
-    body: PropTypes.string,
-    media: PropTypes.string,
     name: PropTypes.string,
     avatar: PropTypes.string,
     email: PropTypes.string,
     banner: PropTypes.string,
+    posts: PropTypes.array,
   }),
   displayButton: PropTypes.bool,
   getProfile: PropTypes.func,

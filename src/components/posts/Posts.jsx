@@ -2,6 +2,7 @@ import { Card, Col, Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import userAvatar from "../../assets/avatar.svg";
+import { formatDistance } from "date-fns";
 
 function Posts({ post }) {
   const avatar = post.author.avatar ? post.author.avatar : userAvatar;
@@ -18,7 +19,12 @@ function Posts({ post }) {
           <Card.Title>{post.title}</Card.Title>
           <p> {post.body}</p>
           <Image fluid src={post.media}></Image>
-          <p>Created: {post.created}</p>
+          <p>
+            Created:{" "}
+            {formatDistance(new Date(post.created), new Date(), {
+              addSuffix: true,
+            })}
+          </p>
           <Link
             to={`/post/${post.id}`}
             className="btn btn-primary text-light my-3"
