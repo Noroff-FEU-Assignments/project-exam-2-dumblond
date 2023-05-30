@@ -1,5 +1,4 @@
-import { Breadcrumb, Card, CloseButton, Col, Image } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { Breadcrumb, Card, Col, Image } from "react-bootstrap";
 import PropTypes from "prop-types";
 import userAvatar from "../../assets/avatar.svg";
 import userBanner from "../../assets/banner.svg";
@@ -7,7 +6,6 @@ import userBanner from "../../assets/banner.svg";
 function Post({ post }) {
   const avatar = post.author.avatar ? post.author.avatar : userAvatar;
   const banner = post.author.banner ? post.author.banner : userBanner;
-  const navigate = useNavigate();
 
   return (
     <Col>
@@ -23,13 +21,6 @@ function Post({ post }) {
               src={avatar}
               alt={`${post.author.name}'s avatar`}
             ></Card.Img>
-            <CloseButton
-              aria-label="Close detail page"
-              className="mb-3"
-              onClick={function () {
-                navigate("/posts");
-              }}
-            />
           </div>
           <Card.Title>{post.title}</Card.Title>
           <p> {post.body}</p>

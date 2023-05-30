@@ -9,6 +9,7 @@ import PostDetail from "./components/pages/PostDetail";
 import LatestPosts from "./components/pages/LatestPosts";
 import Profiles from "./components/pages/Profiles";
 import ProfileDetail from "./components/pages/ProfileDetail";
+import MakePost from "./components/forms/MakePost";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/profiles" element={<Profiles />} />
             <Route path="/profile/:param" element={<ProfileDetail />} />
+            <Route path="/makepost" element={<MakePost />} />
           </Route>
         </Routes>
       </BrowserRouter>

@@ -51,7 +51,7 @@ function Profiles() {
     <>
       <Container>
         <Header title="Profiles" />
-        <Row xs={1} md={2} className="g-4">
+        <Row xs={1} className="g-4">
           {profiles.map(function (profile) {
             return (
               <Profile

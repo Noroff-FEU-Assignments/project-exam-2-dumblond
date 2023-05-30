@@ -14,10 +14,11 @@ function Posts({ post }) {
             src={avatar}
             alt={`${post.author.name}'s avatar`}
           ></Card.Img>
-          <h3> {post.author.name}</h3>
+          <h2> {post.author.name}</h2>
           <Card.Title>{post.title}</Card.Title>
           <p> {post.body}</p>
           <Image fluid src={post.media}></Image>
+          <p>Created: {post.created}</p>
           <Link
             to={`/post/${post.id}`}
             className="btn btn-primary text-light my-3"
@@ -37,6 +38,7 @@ Posts.propTypes = {
     id: PropTypes.number,
     body: PropTypes.string,
     media: PropTypes.string,
+    created: PropTypes.string,
     author: PropTypes.shape({
       name: PropTypes.string,
       avatar: PropTypes.string,

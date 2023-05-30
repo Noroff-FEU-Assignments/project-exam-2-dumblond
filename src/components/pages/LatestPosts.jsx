@@ -1,4 +1,4 @@
-import { Container, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import Header from "../common/Header";
 import { useContext, useEffect, useState } from "react";
 import { API } from "../../constants/api";
@@ -7,6 +7,8 @@ import Loading from "../common/Loading";
 import DisplayMessage from "../common/DisplayMessage";
 import Posts from "../posts/Posts";
 import AuthContext from "../../context/AuthContext";
+import { Link } from "react-router-dom";
+import MakePost from "../forms/MakePost";
 
 function LatestPosts() {
   const [posts, setPosts] = useState([]);
@@ -50,7 +52,18 @@ function LatestPosts() {
     <>
       <Container>
         <Header title="Latest posts" />
-        <Row xs={1} md={2} className="g-4">
+        <Row>
+          <Col className="d-grid">
+            <Link
+              to={"/makepost"}
+              className="btn btn-primary text-light my-3"
+              type="button"
+            >
+              Make a post
+            </Link>
+          </Col>
+        </Row>
+        <Row xs={1} className="g-4">
           {posts.map(function (post) {
             return <Posts key={post.id} post={post} />;
           })}
