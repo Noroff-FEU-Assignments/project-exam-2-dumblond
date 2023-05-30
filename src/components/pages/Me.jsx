@@ -6,7 +6,7 @@ import Loading from "../common/Loading";
 import DisplayMessage from "../common/DisplayMessage";
 import { profileAPI } from "../../constants/api";
 import Profile from "../posts/Profile";
-import { Breadcrumb, Card, Container } from "react-bootstrap";
+import { Breadcrumb, Card, Container, Image } from "react-bootstrap";
 import Header from "../common/Header";
 import EditPost from "../forms/EditPost";
 
@@ -66,9 +66,12 @@ function Me() {
         {profile.posts.map(function (post) {
           return (
             <div key={post.id}>
-              <Card className="my-3 p-3">
-                <h3>{post.title} </h3> <p>{post.body}</p>
-                <EditPost />
+              <Card className="my-3">
+                <Card.Body>
+                  <h3>{post.title} </h3> <p>{post.body}</p>
+                  <Image fluid src={post.media} className="mb-3"></Image>
+                  <EditPost post={post} getPost={getProfile} />
+                </Card.Body>
               </Card>
             </div>
           );
