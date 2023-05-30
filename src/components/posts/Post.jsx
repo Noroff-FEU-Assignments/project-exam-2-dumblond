@@ -2,6 +2,7 @@ import { Breadcrumb, Card, Col, Image } from "react-bootstrap";
 import PropTypes from "prop-types";
 import userAvatar from "../../assets/avatar.svg";
 import userBanner from "../../assets/banner.svg";
+import Header from "../common/Header";
 
 function Post({ post }) {
   const avatar = post.author.avatar ? post.author.avatar : userAvatar;
@@ -13,6 +14,7 @@ function Post({ post }) {
         <Breadcrumb.Item href="/posts">Latest Posts</Breadcrumb.Item>
         <Breadcrumb.Item active>{post.author.name}`s post</Breadcrumb.Item>
       </Breadcrumb>
+      <Header title={`${post.author.name}'s post`} />
       <Card>
         <Card.Img variant="top" src={banner}></Card.Img>
         <Card.Body>

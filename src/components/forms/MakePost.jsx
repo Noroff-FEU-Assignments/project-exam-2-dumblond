@@ -1,4 +1,4 @@
-import { Button, Container, Form } from "react-bootstrap";
+import { Breadcrumb, Button, Container, Form } from "react-bootstrap";
 import ValidationError from "./ValidationError";
 import { useContext, useState } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -62,7 +62,12 @@ function MakePost({ post, getPostId }) {
   return (
     <>
       <Container>
+        <Breadcrumb className="pt-3">
+          <Breadcrumb.Item href="/posts">Latest Posts</Breadcrumb.Item>
+          <Breadcrumb.Item active>Make a post</Breadcrumb.Item>
+        </Breadcrumb>
         <Header title="Make a post" />
+
         <Form onSubmit={handleSubmit(submitForm)}>
           <Form.Group className="mb-3" controlId="title">
             <Form.Label>Title</Form.Label>

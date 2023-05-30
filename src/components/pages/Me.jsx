@@ -7,6 +7,7 @@ import DisplayMessage from "../common/DisplayMessage";
 import { profileAPI } from "../../constants/api";
 import Profile from "../posts/Profile";
 import { Breadcrumb } from "react-bootstrap";
+import Header from "../common/Header";
 
 function Me() {
   const [auth] = useContext(AuthContext);
@@ -57,7 +58,7 @@ function Me() {
         <Breadcrumb.Item href="/profiles">Profiles</Breadcrumb.Item>
         <Breadcrumb.Item active>My profile</Breadcrumb.Item>
       </Breadcrumb>
-
+      <Header title="My profile" />
       <Profile profile={profile} getProfile={getProfile} />
     </>
   );

@@ -52,10 +52,10 @@ function LatestPosts() {
       <Container>
         <Header title="Latest posts" />
         <Row>
-          <Col className="d-grid">
+          <Col className="d-grid col-10 mx-auto">
             <Link
               to={"/makepost"}
-              className="btn btn-primary text-light my-3"
+              className="btn btn-primary text-light m-3"
               type="button"
             >
               Make a post

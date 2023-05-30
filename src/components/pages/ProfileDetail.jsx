@@ -8,6 +8,7 @@ import { profileAPI } from "../../constants/api";
 import Profile from "../posts/Profile";
 import { Breadcrumb } from "react-bootstrap";
 import { useParams } from "react-router-dom";
+import Header from "../common/Header";
 
 function ProfileDetail() {
   const [auth] = useContext(AuthContext);
@@ -55,7 +56,7 @@ function ProfileDetail() {
         <Breadcrumb.Item href="/profiles">Profiles</Breadcrumb.Item>
         <Breadcrumb.Item active>{profile.name}`s profile</Breadcrumb.Item>
       </Breadcrumb>
-
+      <Header title={`${profile.name}'s profile`} />
       <Profile profile={profile} />
     </>
   );
