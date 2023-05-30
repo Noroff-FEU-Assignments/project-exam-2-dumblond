@@ -10,6 +10,7 @@ import axios from "axios";
 import PropTypes from "prop-types";
 import Header from "../common/Header";
 import { MAXIMUM_BODY_LENGTH } from "../../constants/Validation";
+import DisplayMessage from "../common/DisplayMessage";
 
 const schema = yup.object().shape({
   title: yup.string().required(),
@@ -25,7 +26,7 @@ const schema = yup.object().shape({
 
 function MakePost({ post, getPostId }) {
   const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState(null);
+  const [postError, setError] = useState(null);
   const URL = API + "posts";
 
   const {
@@ -50,6 +51,7 @@ function MakePost({ post, getPostId }) {
       });
       console.log(URL);
       getPostId();
+      navigate("/posts");
     } catch (error) {
       console.log("error", error);
       setError(error.toString());
@@ -77,6 +79,8 @@ function MakePost({ post, getPostId }) {
             <Form.Label>Body</Form.Label>
             <Form.Control
               type="text"
+              as="textarea"
+              rows={8}
               placeholder="body"
               {...register("body")}
             />
@@ -95,11 +99,8 @@ function MakePost({ post, getPostId }) {
               <ValidationError>{errors.media.message}</ValidationError>
             )}
           </Form.Group>
-          <Button variant="secondary" className="m-2">
-            Close
-          </Button>
           <Button variant="primary" type="submit" className="m-2">
-            Save Changes
+            {submitted ? "You are creating a post" : "Create the post"}
           </Button>
         </Form>
       </Container>
