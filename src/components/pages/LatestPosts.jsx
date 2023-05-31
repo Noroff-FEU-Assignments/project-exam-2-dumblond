@@ -28,6 +28,7 @@ function LatestPosts() {
 
           if (response.status === 200) {
             setPosts(response.data);
+            console.log(response.data);
           } else {
             setError("Faen!");
           }

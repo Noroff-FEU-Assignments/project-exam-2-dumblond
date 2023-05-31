@@ -6,7 +6,7 @@ import Loading from "../common/Loading";
 import DisplayMessage from "../common/DisplayMessage";
 import { profileAPI } from "../../constants/api";
 import Profile from "../posts/Profile";
-import { Breadcrumb } from "react-bootstrap";
+import { Breadcrumb, Card, Container, Image } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import Header from "../common/Header";
 
@@ -19,7 +19,7 @@ function ProfileDetail() {
   const { param } = useParams();
 
   useEffect(function () {
-    const URL = profileAPI + "/" + `${param}`;
+    const URL = profileAPI + "/" + `${param}?_posts=true`;
     async function fetchData() {
       try {
         const response = await axios.get(URL, {
@@ -58,6 +58,32 @@ function ProfileDetail() {
       </Breadcrumb>
       <Header title={`${profile.name}'s profile`} />
       <Profile profile={profile} />
+      <Container>
+        {profile.posts.length > 0 ? (
+          <h2 className="text-center pt-4">{profile.name}&apos;s posts</h2>
+        ) : (
+          <></>
+        )}
+        {profile.posts.map(function (post) {
+          return (
+            <div key={post.id}>
+              <Card className="my-3">
+                <Card.Body>
+                  <h3>{post.title} </h3> <p>{post.body}</p>
+                  {post.media && (
+                    <Image
+                      fluid
+                      src={post.media}
+                      className="mb-3"
+                      alt={`${post.title}'s image`}
+                    ></Image>
+                  )}
+                </Card.Body>
+              </Card>
+            </div>
+          );
+        })}
+      </Container>
     </>
   );
 }

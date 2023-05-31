@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import userAvatar from "../../assets/avatar.svg";
 import userBanner from "../../assets/banner.svg";
 import Header from "../common/Header";
+import Comments from "../forms/Comments";
 
 function Post({ post }) {
   const avatar = post.author.avatar ? post.author.avatar : userAvatar;
@@ -26,9 +27,12 @@ function Post({ post }) {
           </div>
           <Card.Title>{post.title}</Card.Title>
           <p> {post.body}</p>
-          <Image fluid src={post.media}></Image>
+          {post.media && (
+            <Image fluid src={post.media} alt={`${post.title}'s image`}></Image>
+          )}
           <p> {post.author.name}</p>
           <p> {post.author.email}</p>
+          <Comments />
         </Card.Body>
       </Card>
     </Col>

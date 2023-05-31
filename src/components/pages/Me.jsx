@@ -4,9 +4,9 @@ import axios from "axios";
 import { useState } from "react";
 import Loading from "../common/Loading";
 import DisplayMessage from "../common/DisplayMessage";
-import { profileAPI } from "../../constants/api";
+import { API, profileAPI } from "../../constants/api";
 import Profile from "../posts/Profile";
-import { Breadcrumb, Card, Container, Image } from "react-bootstrap";
+import { Breadcrumb, Button, Card, Container, Image } from "react-bootstrap";
 import Header from "../common/Header";
 import EditPost from "../forms/EditPost";
 
@@ -16,6 +16,25 @@ function Me() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const URL = profileAPI + "/" + auth.name + "?_posts=true";
+
+  function deletePost(id) {
+    const deleteButton = confirm("Are you sure you want to delete the post?");
+    console.log(deleteButton);
+    console.log(id);
+
+    if (deleteButton) {
+      try {
+        axios.delete(API + "posts/" + id, {
+          headers: {
+            Authorization: `Bearer ${auth.accessToken}`,
+          },
+        });
+        getProfile();
+      } catch (error) {
+        setError(error.toString());
+      }
+    }
+  }
 
   const getProfile = async function () {
     async function fetchData() {
@@ -62,15 +81,36 @@ function Me() {
       <Header title="My profile" />
       <Profile profile={profile} getProfile={getProfile} />
       <Container>
-        <h2 className="text-center pt-4">My posts</h2>
+        {profile.posts.length > 0 ? (
+          <h2 className="text-center pt-4">{profile.name}&apos;s posts</h2>
+        ) : (
+          <></>
+        )}
         {profile.posts.map(function (post) {
           return (
             <div key={post.id}>
               <Card className="my-3">
                 <Card.Body>
                   <h3>{post.title} </h3> <p>{post.body}</p>
-                  <Image fluid src={post.media} className="mb-3"></Image>
-                  <EditPost post={post} getPost={getProfile} />
+                  {post.media && (
+                    <Image
+                      fluid
+                      src={post.media}
+                      className="mb-3"
+                      alt={`${post.title}'s image`}
+                    ></Image>
+                  )}
+                  <div className="d-flex justify-content-between">
+                    <EditPost post={post} getPost={getProfile} />
+                    <Button
+                      variant="danger"
+                      onClick={function () {
+                        deletePost(post.id);
+                      }}
+                    >
+                      Delete post
+                    </Button>
+                  </div>
                 </Card.Body>
               </Card>
             </div>
