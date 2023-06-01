@@ -32,7 +32,7 @@ function Post({ post }) {
           )}
           <p> {post.author.name}</p>
           <p> {post.author.email}</p>
-          <Comments />
+          <Comments id={post.id} />
         </Card.Body>
       </Card>
     </Col>

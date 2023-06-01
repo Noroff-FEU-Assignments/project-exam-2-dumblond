@@ -35,7 +35,7 @@ function Posts({ post }) {
           >
             View post
           </Link>
-          <Comments />
+          <Comments id={post.id} post={post} />
           {post.comments.length > 0 && (
             <Card.Footer>
               {post.comments.map(function (comment) {
