@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import AuthContext from "../../context/AuthContext";
 import EditProfile from "../forms/EditProfile";
+import Follow from "../forms/Follow";
 
 function Profile({ profile, displayButton, getProfile }) {
   const [auth] = useContext(AuthContext);
@@ -16,6 +17,7 @@ function Profile({ profile, displayButton, getProfile }) {
     <Col>
       <Card>
         <Card.Img variant="top" src={banner}></Card.Img>
+
         <Card.Body>
           <div className="d-flex justify-content-between">
             <Card.Img src={avatar} alt={`${profile.name}'s avatar`}></Card.Img>
@@ -33,6 +35,9 @@ function Profile({ profile, displayButton, getProfile }) {
           )}
           {auth.name === profile.name && (
             <EditProfile profile={profile} getProfile={getProfile} />
+          )}
+          {auth.name !== profile.name && !displayButton && (
+            <Follow profile={profile} getProfile={getProfile} />
           )}
         </Card.Body>
       </Card>

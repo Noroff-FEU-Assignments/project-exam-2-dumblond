@@ -22,7 +22,13 @@ function EditPost({ post, getPost }) {
   const handleShow = () => setShow(true);
 
   const schema = yup.object().shape({
-    title: yup.string().required(),
+    title: yup
+      .string()
+      .required()
+      .max(
+        MAXIMUM_BODY_LENGTH,
+        `Your title can be ${MAXIMUM_BODY_LENGTH} characters`
+      ),
     body: yup
       .string()
       .required()

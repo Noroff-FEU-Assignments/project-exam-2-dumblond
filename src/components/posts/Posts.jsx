@@ -13,12 +13,13 @@ function Posts({ post, refreshPosts }) {
     <Col>
       <Card>
         <Card.Body>
-          <Card.Img
-            src={avatar}
-            alt={`${post.author.name}'s avatar`}
-          ></Card.Img>
-
-          <h2> {post.author.name}</h2>
+          <Link to={`/profile/${post.author.name}`}>
+            <Card.Img
+              src={avatar}
+              alt={`${post.author.name}'s avatar`}
+            ></Card.Img>
+            <h2> {post.author.name}</h2>
+          </Link>
           <Card.Title>{post.title}</Card.Title>
           <p> {post.body}</p>
           {post.media && (
@@ -46,9 +47,11 @@ function Posts({ post, refreshPosts }) {
               {post.comments.map(function (comment) {
                 return (
                   <div key={comment.id} className="border-bottom mb-4">
-                    <div className="d-flex">
-                      <Card.Img src={comment.author.avatar} />
-                      <p className="m-3">{comment.author.name}</p>
+                    <div>
+                      <Link to={`/profile/${post.author.name}`}>
+                        <Card.Img src={comment.author.avatar} />
+                        <p className="mt-2">{comment.author.name}</p>
+                      </Link>
                     </div>
                     <p> {comment.body}</p>
                   </div>

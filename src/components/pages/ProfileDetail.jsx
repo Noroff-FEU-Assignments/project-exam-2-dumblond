@@ -7,7 +7,7 @@ import DisplayMessage from "../common/DisplayMessage";
 import { profileAPI } from "../../constants/api";
 import Profile from "../posts/Profile";
 import { Breadcrumb, Card, Container, Image } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Header from "../common/Header";
 
 function ProfileDetail() {
@@ -19,7 +19,7 @@ function ProfileDetail() {
   const { param } = useParams();
 
   useEffect(function () {
-    const URL = profileAPI + "/" + `${param}?_posts=true`;
+    const URL = profileAPI + "/" + `${param}?_posts=true&_followers=true`;
     async function fetchData() {
       try {
         const response = await axios.get(URL, {
@@ -69,7 +69,10 @@ function ProfileDetail() {
             <div key={post.id}>
               <Card className="my-3">
                 <Card.Body>
-                  <h3>{post.title} </h3> <p>{post.body}</p>
+                  <Link to={`/post/${post.id}`}>
+                    <h3>{post.title} </h3>
+                  </Link>
+                  <p>{post.body}</p>
                   {post.media && (
                     <Image
                       fluid

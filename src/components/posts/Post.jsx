@@ -5,6 +5,7 @@ import userBanner from "../../assets/banner.svg";
 import Header from "../common/Header";
 import Comments from "../forms/Comments";
 import Reaction from "../forms/Reaction";
+import { Link } from "react-router-dom";
 
 function Post({ post, getPost }) {
   const avatar = post.author.avatar ? post.author.avatar : userAvatar;
@@ -21,17 +22,19 @@ function Post({ post, getPost }) {
         <Card.Img variant="top" src={banner}></Card.Img>
         <Card.Body>
           <div className="d-flex justify-content-between">
-            <Card.Img
-              src={avatar}
-              alt={`${post.author.name}'s avatar`}
-            ></Card.Img>
+            <Link to={`/profile/${post.author.name}`}>
+              <Card.Img
+                src={avatar}
+                alt={`${post.author.name}'s avatar`}
+              ></Card.Img>
+              <p> {post.author.name}</p>
+            </Link>
           </div>
           <Card.Title>{post.title}</Card.Title>
           <p> {post.body}</p>
           {post.media && (
             <Image fluid src={post.media} alt={`${post.title}'s image`}></Image>
           )}
-          <p> {post.author.name}</p>
           <p> {post.author.email}</p>
           <div className="d-flex justify-content-end">
             <Reaction post={post} getPosts={getPost} />
@@ -43,9 +46,11 @@ function Post({ post, getPost }) {
               {post.comments.map(function (comment) {
                 return (
                   <div key={comment.id} className="border-bottom mb-4">
-                    <div className="d-flex">
-                      <Card.Img src={comment.author.avatar} />
-                      <p className="m-3">{comment.author.name}</p>
+                    <div>
+                      <Link to={`/profile/${post.author.name}`}>
+                        <Card.Img src={comment.author.avatar} />
+                        <p className="mt-2">{comment.author.name}</p>
+                      </Link>
                     </div>
                     <p> {comment.body}</p>
                   </div>

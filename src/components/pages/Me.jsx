@@ -10,6 +10,7 @@ import { Breadcrumb, Button, Card, Container, Image } from "react-bootstrap";
 import Header from "../common/Header";
 import EditPost from "../forms/EditPost";
 import { formatDistance } from "date-fns";
+import { Link } from "react-router-dom";
 
 function Me() {
   const [auth] = useContext(AuthContext);
@@ -89,7 +90,10 @@ function Me() {
             <div key={post.id}>
               <Card className="my-3">
                 <Card.Body>
-                  <h3>{post.title} </h3> <p>{post.body}</p>
+                  <Link to={`/post/${post.id}`}>
+                    <h3>{post.title} </h3>
+                  </Link>
+                  <p>{post.body}</p>
                   {post.media && (
                     <Image
                       fluid
