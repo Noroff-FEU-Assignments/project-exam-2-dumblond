@@ -24,28 +24,28 @@ function PostDetail() {
   const URL =
     API + `posts/${param}?_reactions=true&_author=true&_comments=true`;
 
-  useEffect(function () {
-    async function fetchData() {
-      try {
-        const response = await axios.get(URL, {
-          headers: {
-            Authorization: `Bearer ${auth.accessToken}`,
-          },
-        });
+  const getPost = async function () {
+    try {
+      const response = await axios.get(URL, {
+        headers: {
+          Authorization: `Bearer ${auth.accessToken}`,
+        },
+      });
 
-        if (response.status === 200) {
-          console.log(response.data);
-          setPost(response.data);
-        } else {
-          setError("Faen!");
-        }
-      } catch (error) {
-        setError(error.toString());
-      } finally {
-        setLoading(false);
+      if (response.status === 200) {
+        setPost(response.data);
+      } else {
+        setError("Faen!");
       }
+    } catch (error) {
+      setError(error.toString());
+    } finally {
+      setLoading(false);
     }
-    fetchData();
+  };
+
+  useEffect(function () {
+    getPost();
   }, []);
 
   if (loading) {
@@ -56,7 +56,7 @@ function PostDetail() {
     return <DisplayMessage messageType="danger" message="Helvete" />;
   }
 
-  return <PostDetailItem post={post} />;
+  return <PostDetailItem post={post} getPost={getPost} />;
 }
 
 export default PostDetail;

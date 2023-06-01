@@ -9,6 +9,7 @@ import Profile from "../posts/Profile";
 import { Breadcrumb, Button, Card, Container, Image } from "react-bootstrap";
 import Header from "../common/Header";
 import EditPost from "../forms/EditPost";
+import { formatDistance } from "date-fns";
 
 function Me() {
   const [auth] = useContext(AuthContext);
@@ -19,8 +20,6 @@ function Me() {
 
   function deletePost(id) {
     const deleteButton = confirm("Are you sure you want to delete the post?");
-    console.log(deleteButton);
-    console.log(id);
 
     if (deleteButton) {
       try {
@@ -47,7 +46,6 @@ function Me() {
 
         if (response.status === 200) {
           setProfile(response.data);
-          console.log(response.data);
         } else {
           setError("Faen!");
         }
@@ -100,6 +98,12 @@ function Me() {
                       alt={`${post.title}'s image`}
                     ></Image>
                   )}
+                  <p>
+                    Created:{" "}
+                    {formatDistance(new Date(post.created), new Date(), {
+                      addSuffix: true,
+                    })}
+                  </p>
                   <div className="d-flex justify-content-between">
                     <EditPost post={post} getPost={getProfile} />
                     <Button

@@ -15,30 +15,29 @@ function LatestPosts() {
   const [error, setError] = useState(null);
   const [auth] = useContext(AuthContext);
 
+  const URL = API + "posts?_reactions=true&_author=true&_comments=true";
+  const fetchPosts = async function () {
+    try {
+      const response = await axios.get(URL, {
+        headers: {
+          Authorization: `Bearer ${auth.accessToken}`,
+        },
+      });
+
+      if (response.status === 200) {
+        setPosts(response.data);
+      } else {
+        setError("Faen!");
+      }
+    } catch (error) {
+      setError(error.toString());
+    } finally {
+      setLoading(false);
+    }
+  };
   useEffect(
     function () {
-      const URL = API + "posts?_reactions=true&_author=true&_comments=true";
-      async function fetchData() {
-        try {
-          const response = await axios.get(URL, {
-            headers: {
-              Authorization: `Bearer ${auth.accessToken}`,
-            },
-          });
-
-          if (response.status === 200) {
-            setPosts(response.data);
-            console.log(response.data);
-          } else {
-            setError("Faen!");
-          }
-        } catch (error) {
-          setError(error.toString());
-        } finally {
-          setLoading(false);
-        }
-      }
-      fetchData();
+      fetchPosts();
     },
     [auth.accessToken]
   );
@@ -56,7 +55,7 @@ function LatestPosts() {
       <Container>
         <Header title="Latest posts" />
         <Row>
-          <Col className="d-grid col-12 col-md-8 mx-auto">
+          <Col className="d-grid col-8 col-md-6 mx-auto">
             <Link
               to="/makepost"
               className="btn btn-primary text-light m-3"
@@ -68,7 +67,9 @@ function LatestPosts() {
         </Row>
         <Row xs={1} className="g-4">
           {posts.map(function (post) {
-            return <Posts key={post.id} post={post} />;
+            return (
+              <Posts key={post.id} post={post} refreshPosts={fetchPosts} />
+            );
           })}
         </Row>
       </Container>

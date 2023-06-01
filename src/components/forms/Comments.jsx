@@ -10,7 +10,6 @@ import ValidationError from "./ValidationError";
 import DisplayMessage from "../common/DisplayMessage";
 import { MAXIMUM_BODY_LENGTH } from "../../constants/Validation";
 import PropTypes from "prop-types";
-import { useNavigate } from "react-router-dom";
 
 const schema = yup.object().shape({
   body: yup
@@ -22,15 +21,15 @@ const schema = yup.object().shape({
     ),
 });
 
-function Comments({ id }) {
+function Comments({ id, refreshPosts }) {
   const [submitted, setSubmitted] = useState(false);
   const [postError, setPostError] = useState(null);
   const URL = API + "posts/" + id + "/comment";
-  const navigate = useNavigate();
 
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
@@ -48,7 +47,8 @@ function Comments({ id }) {
           Authorization: `Bearer ${auth.accessToken}`,
         },
       });
-      navigate("/posts");
+      refreshPosts();
+      reset();
     } catch (error) {
       console.log("error", error);
       setPostError(error.toString());
@@ -76,3 +76,8 @@ function Comments({ id }) {
 }
 
 export default Comments;
+
+Comments.propTypes = {
+  id: PropTypes.number,
+  refreshPosts: PropTypes.func,
+};

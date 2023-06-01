@@ -4,8 +4,9 @@ import PropTypes from "prop-types";
 import userAvatar from "../../assets/avatar.svg";
 import { formatDistance } from "date-fns";
 import Comments from "../forms/Comments";
+import Reaction from "../forms/Reaction";
 
-function Posts({ post }) {
+function Posts({ post, refreshPosts }) {
   const avatar = post.author.avatar ? post.author.avatar : userAvatar;
 
   return (
@@ -16,6 +17,7 @@ function Posts({ post }) {
             src={avatar}
             alt={`${post.author.name}'s avatar`}
           ></Card.Img>
+
           <h2> {post.author.name}</h2>
           <Card.Title>{post.title}</Card.Title>
           <p> {post.body}</p>
@@ -28,14 +30,17 @@ function Posts({ post }) {
               addSuffix: true,
             })}
           </p>
-          <Link
-            to={`/post/${post.id}`}
-            className="btn btn-primary text-light"
-            type="button"
-          >
-            View post
-          </Link>
-          <Comments id={post.id} post={post} />
+          <div className="d-flex justify-content-between">
+            <Link
+              to={`/post/${post.id}`}
+              className="btn btn-primary text-light"
+              type="button"
+            >
+              View post
+            </Link>
+            <Reaction post={post} getPosts={refreshPosts} />
+          </div>
+          <Comments id={post.id} refreshPosts={refreshPosts} />
           {post.comments.length > 0 && (
             <Card.Footer>
               {post.comments.map(function (comment) {
@@ -64,18 +69,14 @@ Posts.propTypes = {
     body: PropTypes.string,
     media: PropTypes.string,
     created: PropTypes.string,
-    comments: PropTypes.shape({
-      id: PropTypes.number,
-      title: PropTypes.string,
-      map: PropTypes.string,
-      length: PropTypes.number,
-    }),
+    comments: PropTypes.array,
     author: PropTypes.shape({
       name: PropTypes.string,
       avatar: PropTypes.string,
       email: PropTypes.string,
     }),
   }),
+  refreshPosts: PropTypes.func,
 };
 
 export default Posts;
