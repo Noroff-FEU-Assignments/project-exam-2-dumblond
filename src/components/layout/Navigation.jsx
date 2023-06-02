@@ -16,7 +16,7 @@ function Navigation() {
     <Navbar bg="light" variant="light" expand="lg">
       <Container>
         <Link className="navbar-brand" to={auth ? "posts" : "/"}>
-          <img src={logo} alt="" height="50" />
+          <img src={logo} alt="nb some logo" height="50" />
         </Link>
         <Navbar.Toggle aria-controls="main-navigation" />
         <Navbar.Collapse id="main-navigation">
