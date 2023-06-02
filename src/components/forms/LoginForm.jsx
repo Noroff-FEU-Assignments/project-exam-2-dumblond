@@ -9,7 +9,7 @@ import { loginAPI } from "../../constants/api";
 import { Button, Container, Form, FormLabel } from "react-bootstrap";
 import DisplayMessage from "../common/DisplayMessage";
 import ValidationError from "./ValidationError";
-import { MAIL_VALIDATION } from "../../constants/Validation";
+import { MAIL_VALIDATION } from "../../constants/validation";
 
 const schema = yup.object().shape({
   email: yup

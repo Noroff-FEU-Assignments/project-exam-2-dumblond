@@ -9,7 +9,7 @@ import AuthContext from "../../context/AuthContext";
 import axios from "axios";
 import PropTypes from "prop-types";
 import Header from "../common/Header";
-import { MAXIMUM_BODY_LENGTH } from "../../constants/Validation";
+import { MAXIMUM_BODY_LENGTH } from "../../constants/validation";
 import { useNavigate } from "react-router-dom";
 import DisplayMessage from "../common/DisplayMessage";
 

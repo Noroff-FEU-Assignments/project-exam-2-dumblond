@@ -8,7 +8,7 @@ import AuthContext from "../../context/AuthContext";
 import axios from "axios";
 import ValidationError from "./ValidationError";
 import DisplayMessage from "../common/DisplayMessage";
-import { MAXIMUM_BODY_LENGTH } from "../../constants/Validation";
+import { MAXIMUM_BODY_LENGTH } from "../../constants/validation";
 import PropTypes from "prop-types";
 
 const schema = yup.object().shape({

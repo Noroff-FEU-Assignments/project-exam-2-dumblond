@@ -4,7 +4,7 @@ import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { MAXIMUM_BODY_LENGTH } from "../../constants/Validation";
+import { MAXIMUM_BODY_LENGTH } from "../../constants/validation";
 import axios from "axios";
 import DisplayMessage from "../common/DisplayMessage";
 import { API } from "../../constants/api";

@@ -5,7 +5,7 @@ import {
   MAIL_VALIDATION,
   MINIMUM_PASSWORD_LENGTH,
   NAME,
-} from "../../constants/Validation";
+} from "../../constants/validation";
 import { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import ValidationError from "./ValidationError";
