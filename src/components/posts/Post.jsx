@@ -30,13 +30,23 @@ function Post({ post, getPost }) {
               <p> {post.author.name}</p>
             </Link>
           </div>
+
           <Card.Title>{post.title}</Card.Title>
+          <div className="d-flex mb-3">
+            {post.reactions.length > 0 &&
+              post.reactions.map((reaction) => (
+                <div key={reaction.symbol}>
+                  {reaction.symbol}
+                  {reaction.count}
+                </div>
+              ))}
+          </div>
           <p> {post.body}</p>
           {post.media && (
             <Image fluid src={post.media} alt={`${post.title}'s image`}></Image>
           )}
           <p> {post.author.email}</p>
-          <div className="d-flex justify-content-end">
+          <div className="d-flex">
             <Reaction post={post} getPosts={getPost} />
           </div>
 
@@ -47,7 +57,7 @@ function Post({ post, getPost }) {
                 return (
                   <div key={comment.id} className="border-bottom mb-4">
                     <div>
-                      <Link to={`/profile/${post.author.name}`}>
+                      <Link to={`/profile/${comment.author.name}`}>
                         <Card.Img src={comment.author.avatar} />
                         <p className="mt-2">{comment.author.name}</p>
                       </Link>
@@ -71,6 +81,7 @@ Post.propTypes = {
     body: PropTypes.string,
     media: PropTypes.string,
     comments: PropTypes.array,
+    reactions: PropTypes.array,
     author: PropTypes.shape({
       name: PropTypes.string,
       avatar: PropTypes.string,

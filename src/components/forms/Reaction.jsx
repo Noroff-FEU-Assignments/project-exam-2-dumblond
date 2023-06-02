@@ -1,20 +1,20 @@
-import { Button } from "react-bootstrap";
 import { API } from "../../constants/api";
 import PropTypes from "prop-types";
 import axios from "axios";
 import { useContext, useState } from "react";
 import DisplayMessage from "../common/DisplayMessage";
 import AuthContext from "../../context/AuthContext";
+import { GithubSelector } from "@charkour/react-reactions";
 
 function Reaction({ post, getPosts }) {
   const [auth] = useContext(AuthContext);
-  const URL = API + "posts/" + post.id + "/react/👏";
+  const URL = API + "posts/" + post.id + "/react/";
   const [error, setError] = useState(null);
 
-  function likePost() {
+  function likePost(icon) {
     try {
       axios.put(
-        URL,
+        URL + icon,
         {},
         {
           headers: {
@@ -33,9 +33,16 @@ function Reaction({ post, getPosts }) {
   }
 
   return (
-    <Button variant="light" onClick={likePost}>
-      &#x1F44F; {post._count.reactions > 0 ? post._count.reactions : ""}
-    </Button>
+    <>
+      <div className="d-flex">
+        <GithubSelector
+          reactions={["👋", "👌", "😊", "🎉", "😅", "❤️"]}
+          onSelect={function (icon) {
+            likePost(icon);
+          }}
+        />
+      </div>
+    </>
   );
 }
 

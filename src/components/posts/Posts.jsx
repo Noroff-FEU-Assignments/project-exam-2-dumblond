@@ -21,6 +21,15 @@ function Posts({ post, refreshPosts }) {
             <h2> {post.author.name}</h2>
           </Link>
           <Card.Title>{post.title}</Card.Title>
+          <div className="d-flex mb-3">
+            {post.reactions.length > 0 &&
+              post.reactions.map((reaction) => (
+                <div key={reaction.symbol}>
+                  {reaction.symbol}
+                  {reaction.count}
+                </div>
+              ))}
+          </div>
           <p> {post.body}</p>
           {post.media && (
             <Image fluid src={post.media} alt={`${post.title}'s image`} />
@@ -31,17 +40,18 @@ function Posts({ post, refreshPosts }) {
               addSuffix: true,
             })}
           </p>
+          <Link
+            to={`/post/${post.id}`}
+            className="btn btn-primary text-light mb-3"
+            type="button"
+          >
+            View post
+          </Link>
           <div className="d-flex justify-content-between">
-            <Link
-              to={`/post/${post.id}`}
-              className="btn btn-primary text-light"
-              type="button"
-            >
-              View post
-            </Link>
             <Reaction post={post} getPosts={refreshPosts} />
           </div>
           <Comments id={post.id} refreshPosts={refreshPosts} />
+
           {post.comments.length > 0 && (
             <Card.Footer>
               {post.comments.map(function (comment) {
@@ -73,6 +83,7 @@ Posts.propTypes = {
     media: PropTypes.string,
     created: PropTypes.string,
     comments: PropTypes.array,
+    reactions: PropTypes.array,
     author: PropTypes.shape({
       name: PropTypes.string,
       avatar: PropTypes.string,

@@ -3,19 +3,18 @@ import AuthContext from "../../context/AuthContext";
 import { profileAPI } from "../../constants/api";
 import { Button } from "react-bootstrap";
 import axios from "axios";
-import { useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 import DisplayMessage from "../common/DisplayMessage";
 
 function Follow({ profile }) {
-  const { param } = useParams();
   const [auth] = useContext(AuthContext);
-  let URL = profileAPI + "/" + `${param}/follow`;
+  let URL;
   const [error, setError] = useState(null);
-
-  const following = profile.followers.find((user) => {
-    return user.name === auth.name;
-  });
+  const [following, setFollowing] = useState(
+    profile.followers.find(function (user) {
+      return user.name === auth.name;
+    })
+  );
 
   if (following) {
     URL = `${profileAPI}/${profile.name}/unfollow`;
@@ -25,14 +24,16 @@ function Follow({ profile }) {
 
   async function toggleFollow() {
     try {
-      await axios({
-        method: "put",
-        url: URL,
-        headers: {
-          Authorization: `Bearer ${auth.accessToken}`,
-        },
-        data: {},
-      });
+      await axios.put(
+        URL,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${auth.accessToken}`,
+          },
+        }
+      );
+      setFollowing(!following);
     } catch (error) {
       setError(error.toString());
     }

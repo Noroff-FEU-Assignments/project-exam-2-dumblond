@@ -37,7 +37,7 @@ function Profile({ profile, displayButton, getProfile }) {
             <EditProfile profile={profile} getProfile={getProfile} />
           )}
           {auth.name !== profile.name && !displayButton && (
-            <Follow profile={profile} getProfile={getProfile} />
+            <Follow profile={profile} />
           )}
         </Card.Body>
       </Card>
