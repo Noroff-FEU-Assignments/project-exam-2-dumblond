@@ -58,7 +58,10 @@ function Post({ post, getPost }) {
                   <div key={comment.id} className="border-bottom mb-4">
                     <div>
                       <Link to={`/profile/${comment.author.name}`}>
-                        <Card.Img src={comment.author.avatar} />
+                        <Card.Img
+                          src={comment.author.avatar}
+                          alt={`${comment.author.avatar}'s avatar`}
+                        />
                         <p className="mt-2">{comment.author.name}</p>
                       </Link>
                     </div>
