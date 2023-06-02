@@ -32,7 +32,11 @@ function Navigation() {
                 <NavLink to="me" className="nav-link">
                   My profile
                 </NavLink>
-                <Button variant="secondary" onClick={logout}>
+                <Button
+                  variant="secondary"
+                  className="text-light"
+                  onClick={logout}
+                >
                   Log out
                 </Button>
               </>
