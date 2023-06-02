@@ -54,6 +54,6 @@ export default Follow;
 Follow.propTypes = {
   profile: PropTypes.shape({
     name: PropTypes.string,
-    followers: PropTypes.any,
+    followers: PropTypes.array,
   }),
 };
