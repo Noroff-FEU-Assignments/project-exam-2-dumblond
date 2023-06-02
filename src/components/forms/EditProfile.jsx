@@ -82,6 +82,7 @@ function EditProfile({ profile, getProfile }) {
                 <Form.Control
                   type="text"
                   placeholder="https://..."
+                  alt="Avatar picture"
                   {...register("avatar")}
                 />
                 {errors.avatar && (
@@ -93,6 +94,7 @@ function EditProfile({ profile, getProfile }) {
                 <Form.Control
                   type="text"
                   placeholder="https://..."
+                  alt="Banner picture"
                   {...register("banner")}
                 />
                 {errors.banner && (

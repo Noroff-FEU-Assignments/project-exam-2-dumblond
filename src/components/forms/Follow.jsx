@@ -44,7 +44,7 @@ function Follow({ profile }) {
   }
 
   return (
-    <Button variant="secondary" onClick={() => toggleFollow()}>
+    <Button variant="secondary text-light" onClick={() => toggleFollow()}>
       {following ? "Unfollow" : "+ Follow"}
     </Button>
   );

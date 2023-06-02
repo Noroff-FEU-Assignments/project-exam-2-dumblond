@@ -116,6 +116,7 @@ function EditPost({ post, getPost }) {
                 <Form.Control
                   type="text"
                   placeholder="https://..."
+                  alt="Banner picture"
                   {...register("media")}
                 />
                 {errors.media && (
