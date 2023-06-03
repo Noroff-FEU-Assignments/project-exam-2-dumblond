@@ -14,7 +14,11 @@ function Navigation() {
   return (
     <Navbar bg="light" variant="light" expand="lg">
       <Container>
-        <Link className="navbar-brand" to={auth ? "posts" : "/"}>
+        <Link
+          className="navbar-brand"
+          to={auth ? "posts" : "/"}
+          aria-label="nb Some"
+        >
           <svg
             id="Layer_2"
             data-name="Layer 2"
