@@ -54,7 +54,9 @@ function ProfileDetail() {
     <>
       <Breadcrumb className="pt-3">
         <Breadcrumb.Item href="/profiles">Profiles</Breadcrumb.Item>
-        <Breadcrumb.Item active>{profile.name}`s profile</Breadcrumb.Item>
+        <Breadcrumb.Item active className="text-dark">
+          {profile.name}`s profile
+        </Breadcrumb.Item>
       </Breadcrumb>
       <Header title={`${profile.name}'s profile`} />
       <Profile profile={profile} />

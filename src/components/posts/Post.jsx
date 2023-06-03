@@ -15,7 +15,9 @@ function Post({ post, getPost }) {
     <Col>
       <Breadcrumb className="pt-3">
         <Breadcrumb.Item href="/posts">Latest Posts</Breadcrumb.Item>
-        <Breadcrumb.Item active>{post.author.name}`s post</Breadcrumb.Item>
+        <Breadcrumb.Item active className="text-dark">
+          {post.author.name}`s post
+        </Breadcrumb.Item>
       </Breadcrumb>
       <Header title={`${post.author.name}'s post`} />
       <Card>

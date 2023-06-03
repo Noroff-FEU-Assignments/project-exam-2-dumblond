@@ -75,7 +75,9 @@ function Me() {
     <>
       <Breadcrumb className="pt-3">
         <Breadcrumb.Item href="/profiles">Profiles</Breadcrumb.Item>
-        <Breadcrumb.Item active>My profile</Breadcrumb.Item>
+        <Breadcrumb.Item active className="text-dark">
+          My profile
+        </Breadcrumb.Item>
       </Breadcrumb>
       <Header title="My profile" />
       <Profile profile={profile} getProfile={getProfile} />

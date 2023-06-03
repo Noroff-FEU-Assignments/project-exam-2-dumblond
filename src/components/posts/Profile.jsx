@@ -16,7 +16,11 @@ function Profile({ profile, displayButton, getProfile }) {
   return (
     <Col>
       <Card>
-        <Card.Img variant="top" src={banner}></Card.Img>
+        <Card.Img
+          variant="top"
+          src={banner}
+          alt={`${profile.name}'s image`}
+        ></Card.Img>
 
         <Card.Body>
           <div className="d-flex justify-content-between">
