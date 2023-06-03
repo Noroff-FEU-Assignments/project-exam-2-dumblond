@@ -35,7 +35,7 @@ function PostDetail() {
       if (response.status === 200) {
         setPost(response.data);
       } else {
-        setError("Faen!");
+        setError("Something is wrong");
       }
     } catch (error) {
       setError(error.toString());
@@ -53,7 +53,7 @@ function PostDetail() {
   }
 
   if (error) {
-    return <DisplayMessage messageType="danger" message="Helvete" />;
+    return <DisplayMessage messageType="danger" message="Something is wrong" />;
   }
 
   return <PostDetailItem post={post} getPost={getPost} />;

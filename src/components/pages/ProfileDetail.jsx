@@ -31,7 +31,7 @@ function ProfileDetail() {
         if (response.status === 200) {
           setProfile(response.data);
         } else {
-          setError("Faen!");
+          setError("Something is wrong");
         }
       } catch (error) {
         setError(error.toString());
@@ -47,7 +47,7 @@ function ProfileDetail() {
   }
 
   if (error) {
-    return <DisplayMessage messageType="danger" message="Helvete" />;
+    return <DisplayMessage messageType="danger" message="Something is wrong" />;
   }
 
   return (
