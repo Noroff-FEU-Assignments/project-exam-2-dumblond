@@ -1,6 +1,5 @@
 import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import logo from "../../assets/logo.svg";
 import AuthContext from "../../context/AuthContext";
 import { useContext } from "react";
 
@@ -16,7 +15,34 @@ function Navigation() {
     <Navbar bg="light" variant="light" expand="lg">
       <Container>
         <Link className="navbar-brand" to={auth ? "posts" : "/"}>
-          <img src={logo} alt="nb some logo" height="50" />
+          <svg
+            id="Layer_2"
+            data-name="Layer 2"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 58.19 20"
+            height="50"
+          >
+            <g id="Layer_1-2" data-name="Layer 1">
+              <rect
+                className="cls-4"
+                width="21"
+                height="20"
+                rx="2.52"
+                ry="2.52"
+              />
+              <text className="cls-2" transform="translate(1.79 13.84)">
+                <tspan x="0" y="0">
+                  nb{" "}
+                </tspan>
+                <tspan className="cls-1" x="20.24" y="0">
+                  S
+                </tspan>
+                <tspan className="cls-3" x="27.42" y="0">
+                  OME
+                </tspan>
+              </text>
+            </g>
+          </svg>
         </Link>
         <Navbar.Toggle aria-controls="main-navigation" />
         <Navbar.Collapse id="main-navigation">
