@@ -12,7 +12,7 @@ function Navigation() {
     navigate("/");
   }
   return (
-    <Navbar bg="light" variant="light" expand="lg">
+    <Navbar bg="light" variant="light" expand="lg" className="fixed-top">
       <Container>
         <Link
           className="navbar-brand"

@@ -9,7 +9,7 @@ function Layout() {
       <header>
         <Navigation />
       </header>
-      <main>
+      <main className="pt-5 mt-4">
         <Container>
           <Outlet />
         </Container>
