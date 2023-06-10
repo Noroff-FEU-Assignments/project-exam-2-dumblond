@@ -11,13 +11,18 @@ import Header from "../common/Header";
 import EditPost from "../forms/EditPost";
 import { formatDistance } from "date-fns";
 import { Link } from "react-router-dom";
+import Following from "../forms/Following";
 
 function Me() {
   const [auth] = useContext(AuthContext);
   const [profile, setProfile] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const URL = profileAPI + "/" + auth.name + "?_posts=true";
+  const URL =
+    profileAPI +
+    "/" +
+    auth.name +
+    "?_posts=true&_following=true&_followers=true";
 
   function deletePost(id) {
     const deleteButton = confirm("Are you sure you want to delete the post?");
@@ -47,6 +52,7 @@ function Me() {
 
         if (response.status === 200) {
           setProfile(response.data);
+          console.log(response.data);
         } else {
           setError("Something is wrong");
         }
@@ -80,6 +86,18 @@ function Me() {
         </Breadcrumb.Item>
       </Breadcrumb>
       <Header title="My profile" />
+      <div className="mb-4 d-flex gap-4 justify-content-center">
+        <Following
+          buttonText={` ${profile._count.followers} Followers`}
+          title="My Followers"
+          people={profile.followers}
+        />
+        <Following
+          buttonText={`Following ${profile._count.following}`}
+          title="I Follow"
+          people={profile.following}
+        />
+      </div>
       <Profile profile={profile} getProfile={getProfile} />
       <Container>
         {profile.posts.length > 0 ? (

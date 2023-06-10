@@ -6,7 +6,7 @@ import axios from "axios";
 import PropTypes from "prop-types";
 import DisplayMessage from "../common/DisplayMessage";
 
-function Follow({ profile }) {
+function Follow({ profile, getProfile }) {
   const [auth] = useContext(AuthContext);
   let URL;
   const [error, setError] = useState(null);
@@ -34,6 +34,7 @@ function Follow({ profile }) {
         }
       );
       setFollowing(!following);
+      getProfile();
     } catch (error) {
       setError(error.toString());
     }
@@ -57,4 +58,5 @@ Follow.propTypes = {
     name: PropTypes.string,
     followers: PropTypes.array,
   }),
+  getProfile: PropTypes.func,
 };

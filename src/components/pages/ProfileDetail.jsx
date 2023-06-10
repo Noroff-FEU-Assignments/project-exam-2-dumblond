@@ -9,6 +9,7 @@ import Profile from "../posts/Profile";
 import { Breadcrumb, Card, Container, Image } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 import Header from "../common/Header";
+import Following from "../forms/Following";
 
 function ProfileDetail() {
   const [auth] = useContext(AuthContext);
@@ -18,27 +19,30 @@ function ProfileDetail() {
 
   const { param } = useParams();
 
-  useEffect(function () {
-    const URL = profileAPI + "/" + `${param}?_posts=true&_followers=true`;
-    async function fetchData() {
-      try {
-        const response = await axios.get(URL, {
-          headers: {
-            Authorization: `Bearer ${auth.accessToken}`,
-          },
-        });
+  const URL =
+    profileAPI + "/" + `${param}?_posts=true&_followers=true&_following=true`;
 
-        if (response.status === 200) {
-          setProfile(response.data);
-        } else {
-          setError("Something is wrong");
-        }
-      } catch (error) {
-        setError(error.toString());
-      } finally {
-        setLoading(false);
+  async function fetchData() {
+    try {
+      const response = await axios.get(URL, {
+        headers: {
+          Authorization: `Bearer ${auth.accessToken}`,
+        },
+      });
+
+      if (response.status === 200) {
+        setProfile(response.data);
+      } else {
+        setError("Something is wrong");
       }
+    } catch (error) {
+      setError(error.toString());
+    } finally {
+      setLoading(false);
     }
+  }
+
+  useEffect(function () {
     fetchData();
   }, []);
 
@@ -59,7 +63,19 @@ function ProfileDetail() {
         </Breadcrumb.Item>
       </Breadcrumb>
       <Header title={`${profile.name}'s profile`} />
-      <Profile profile={profile} />
+      <div className="mb-4 d-flex gap-4 justify-content-center">
+        <Following
+          buttonText={` ${profile._count.followers} Followers`}
+          title={` ${profile.name} followers`}
+          people={profile.followers}
+        />
+        <Following
+          buttonText={`Following ${profile._count.following}`}
+          title={` ${profile.name} following`}
+          people={profile.following}
+        />
+      </div>
+      <Profile profile={profile} getProfile={fetchData} />
       <Container>
         {profile.posts.length > 0 ? (
           <h2 className="text-center pt-4">{profile.name}&apos;s posts</h2>
@@ -77,9 +93,8 @@ function ProfileDetail() {
                   <p>{post.body}</p>
                   {post.media && (
                     <Image
-                      fluid
+                      className="post-media mb-3"
                       src={post.media}
-                      className="mb-3"
                       alt={`${post.title}'s image`}
                     ></Image>
                   )}

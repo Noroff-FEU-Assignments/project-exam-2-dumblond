@@ -32,7 +32,11 @@ function Posts({ post, refreshPosts }) {
           </div>
           <p> {post.body}</p>
           {post.media && (
-            <Image fluid src={post.media} alt={`${post.title}'s image`} />
+            <Image
+              className="post-media"
+              src={post.media}
+              alt={`${post.title}'s image`}
+            />
           )}
           <p>
             Created:{" "}

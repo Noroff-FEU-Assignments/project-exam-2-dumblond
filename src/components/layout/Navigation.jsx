@@ -79,7 +79,7 @@ function Navigation() {
                   Log in
                 </NavLink>
                 <NavLink to="register" className="nav-link">
-                  Register form
+                  Register
                 </NavLink>
               </>
             )}

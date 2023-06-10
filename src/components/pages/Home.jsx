@@ -15,15 +15,14 @@ function Home() {
           <Accordion.Item eventKey="0">
             <Accordion.Header>I have an account</Accordion.Header>
             <Accordion.Body>
-              Welcome back! Go to the login sight here{" "}
-              <Link to="/login">Login here</Link>
+              Welcome back. <Link to="/login">Click here to login</Link>
             </Accordion.Body>
           </Accordion.Item>
           <Accordion.Item eventKey="1">
             <Accordion.Header>Do not have an account</Accordion.Header>
             <Accordion.Body>
-              Welcome to nb SOME. You need to register to see the sight. Go to
-              the register sight here <Link to="/register">Register here</Link>
+              Welcome to nb SOME. You need to register to see the site.{" "}
+              <Link to="/register">Click here to register</Link>
             </Accordion.Body>
           </Accordion.Item>
         </Accordion>

@@ -19,6 +19,7 @@ function Profile({ profile, displayButton, getProfile }) {
         <Card.Img
           variant="top"
           src={banner}
+          className="profile-banner"
           alt={`${profile.name}'s image`}
         ></Card.Img>
 
@@ -41,7 +42,7 @@ function Profile({ profile, displayButton, getProfile }) {
             <EditProfile profile={profile} getProfile={getProfile} />
           )}
           {auth.name !== profile.name && !displayButton && (
-            <Follow profile={profile} />
+            <Follow profile={profile} getProfile={getProfile} />
           )}
         </Card.Body>
       </Card>

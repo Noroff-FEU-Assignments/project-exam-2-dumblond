@@ -21,7 +21,11 @@ function Post({ post, getPost }) {
       </Breadcrumb>
       <Header title={`${post.author.name}'s post`} />
       <Card>
-        <Card.Img variant="top" src={banner}></Card.Img>
+        <Card.Img
+          variant="top"
+          src={banner}
+          className="profile-banner"
+        ></Card.Img>
         <Card.Body>
           <div className="d-flex justify-content-between">
             <Link to={`/profile/${post.author.name}`}>
@@ -45,7 +49,11 @@ function Post({ post, getPost }) {
           </div>
           <p> {post.body}</p>
           {post.media && (
-            <Image fluid src={post.media} alt={`${post.title}'s image`}></Image>
+            <Image
+              className="post-media"
+              src={post.media}
+              alt={`${post.title}'s image`}
+            ></Image>
           )}
           <p> {post.author.email}</p>
           <div className="d-flex">
