@@ -15,10 +15,7 @@ const schema = yup.object().shape({
   email: yup
     .string()
     .email()
-    .matches(
-      MAIL_VALIDATION,
-      "The email must be a @noroff.no or @stud.noroff.no "
-    )
+    .matches(MAIL_VALIDATION, "The email must be a  @stud.noroff.no ")
     .required("Enter your email"),
   password: yup.string().required("Enter your password"),
 });
