@@ -52,7 +52,6 @@ function Me() {
 
         if (response.status === 200) {
           setProfile(response.data);
-          console.log(response.data);
         } else {
           setError("Something is wrong");
         }

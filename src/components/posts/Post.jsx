@@ -64,13 +64,16 @@ function Post({ post, getPost }) {
           {post.comments.length > 0 && (
             <Card.Footer>
               {post.comments.map(function (comment) {
+                const commentAvatar = comment.author.avatar
+                  ? comment.author.avatar
+                  : userAvatar;
                 return (
                   <div key={comment.id} className="border-bottom mb-4">
                     <div>
                       <Link to={`/profile/${comment.author.name}`}>
                         <Card.Img
-                          src={comment.author.avatar}
-                          alt={`${comment.author.avatar}'s avatar`}
+                          src={commentAvatar}
+                          alt={`${comment.author.name}'s avatar`}
                         />
                         <p className="mt-2">{comment.author.name}</p>
                       </Link>

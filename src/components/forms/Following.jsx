@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button, Image, Modal } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import userAvatar from "../../assets/avatar.svg";
 
 function Following({ buttonText, title, people }) {
   const [show, setShow] = useState(false);
@@ -20,13 +21,14 @@ function Following({ buttonText, title, people }) {
         </Modal.Header>
         <Modal.Body className="">
           {people.map(function (person) {
+            const avatar = person.avatar ? person.avatar : userAvatar;
             return (
               <div
                 key={person.name}
                 className="my-3 border p-2 rounded bg-light"
               >
                 <Link to={`/profile/${person.name}`} reloadDocument>
-                  <Image className="card-img me-4" src={person.avatar} />
+                  <Image className="card-img me-4" src={avatar} />
                   {person.name}
                 </Link>
               </div>
