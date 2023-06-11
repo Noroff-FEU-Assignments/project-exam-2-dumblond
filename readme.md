@@ -9,6 +9,6 @@ npm run dev
 
 ## Resources
 
-- [API Guide] (https://noroff-api-docs.netlify.app/social-endpoints/authentication)
-- [API Documentation] (https://nf-api.onrender.com/docs/static/index.html)
+- [API Guide](https://noroff-api-docs.netlify.app/social-endpoints/authentication)
+- [API Documentation](https://nf-api.onrender.com/docs/static/index.html)
 - 
