@@ -86,6 +86,7 @@ function MakePost() {
             <Form.Control
               type="text"
               placeholder="Title"
+              className="bg-white"
               {...register("title")}
             />
             {errors.title && (
@@ -99,6 +100,7 @@ function MakePost() {
               as="textarea"
               rows={8}
               placeholder="Body (max 280 characters)"
+              className="bg-white"
               {...register("body")}
             />
             {errors.body && (
@@ -110,6 +112,7 @@ function MakePost() {
             <Form.Control
               type="text"
               placeholder="https://..."
+              className="bg-white"
               {...register("media")}
             />
             {errors.media && (

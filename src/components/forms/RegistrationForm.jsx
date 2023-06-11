@@ -100,7 +100,11 @@ function RegistrationForm() {
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Form.Group className="my-3" controlId="name">
           <Form.Label>Name</Form.Label>
-          <Form.Control placeholder="name" {...register("name")} />
+          <Form.Control
+            placeholder="name"
+            {...register("name")}
+            className="bg-white"
+          />
           {errors.name && (
             <ValidationError>{errors.name.message}</ValidationError>
           )}
@@ -108,7 +112,11 @@ function RegistrationForm() {
 
         <Form.Group className="mb-3" controlId="email">
           <Form.Label>E-mail</Form.Label>
-          <Form.Control placeholder="email" {...register("email")} />
+          <Form.Control
+            placeholder="email"
+            {...register("email")}
+            className="bg-white"
+          />
           {errors.email && (
             <ValidationError>{errors.email.message}</ValidationError>
           )}
@@ -119,6 +127,7 @@ function RegistrationForm() {
           <Form.Control
             type="password"
             placeholder="your password"
+            className="bg-white"
             {...register("password")}
           />
           {errors.password && (

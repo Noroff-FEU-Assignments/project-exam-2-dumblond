@@ -71,7 +71,11 @@ function LoginForm() {
           <fieldset disabled={submitted}>
             <Form.Group className="my-3" controlId="email">
               <FormLabel>E-mail</FormLabel>
-              <Form.Control placeholder="email" {...register("email")} />
+              <Form.Control
+                placeholder="email"
+                {...register("email")}
+                className="bg-white"
+              />
               {errors.email && (
                 <ValidationError>{errors.email.message}</ValidationError>
               )}
@@ -81,6 +85,7 @@ function LoginForm() {
               <Form.Control
                 type="password"
                 placeholder="password"
+                className="bg-white"
                 {...register("password")}
               />
               {errors.password && (
