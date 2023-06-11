@@ -1,6 +1,7 @@
 # Project exam 2 report
 
-The assignments goal is to *To take the skills learned over the last two years and take on an extensive project where the finished product should reflect the candidate's general development capabilities, in addition to visual and technical skills*
+The assignments goal is to: 
+*To take the skills learned over the last two years and take on an extensive project where the finished product should reflect the candidate's general development capabilities, in addition to visual and technical skills*
 
 
 ## Run the project locally
