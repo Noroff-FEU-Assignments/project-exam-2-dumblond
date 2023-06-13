@@ -107,8 +107,8 @@ If something is unclear, just ask, and if you don't have the time/willingness to
 or have some air between the buttons so that they are not right next to each other.
 - Hope this helps. Just ask if there is anything that is unclear, or something you are wondering about that I have not answered.
 
-### User test #2 live page on netlify
 
+### User test #2 live page on netlify
 
 This is the message I sent out to my four testers:
 
@@ -147,8 +147,6 @@ Link to the page, it should work on all types of devices:
 Many thanks in advance for your help! 😊 
 
 #### User test #2 answer one
-
-Jørgen on laptop
 
 - Clear first page, but should turn so that you have to press to expand the buttons (I have an account and Do not have an account), now they come with an expanded view first
 - A bit confusing with the button "Do not have an account" in the middle, and at the top right there is "Register FORm" - they end up on the same registration page, right? Do you agree with one of them?
