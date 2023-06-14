@@ -13,10 +13,20 @@ I wanted a clean site with bright colors on it.
 
 I think the biggest challenge is that you can't control what's on the API and that I can't do anything with the setup. But I think I've got a very good page based on the foundation I've had to work with.
 
+We had to make some choices about which products to use, I have chosen to use these:
+- JavaScript Frameworks, React (>16)
+- CSS Frameworks, Bootstrap (>5)
+- Hosting Services, Netlify
+- Design Applications, Adobe XD
+- Planning Applications, GitHub Projects
+
 
 ## Run the project locally
-To run the project locally you first have to clone the repositary and run
+
+To run the project locally you first have to clone the repositary from github, and run
+
 npm install
+
 npm run dev
 
 
@@ -27,7 +37,7 @@ After reading the aproved resources list I had to change from the program I norm
 I tried to include everything we have learned into the planning.
 The setup is in four phases
 1. Planning (includes project in github, logo, typgraphy, buttons and colors decisions)
-2. Testing (make a prototype in XD and let it be tested. Also test the page after developing)
+2. Testing (make a prototype in Adobe XD and let it be tested. Also test the page after developing)
 3. Developing (before and after usertesting)
 4. Delivery (style guide, this report and delivery)
 
@@ -41,21 +51,26 @@ I used postman to get the API information, to see what it contained of informati
 
 ## Styles
 
-The brand of the assignment is nbSOME, that stands for nb designs social media. I wanted a "crazy" color in the logo. I tested with pink on green at det XD version, but I had to change the pink to purple when I started on the developing and tested for colorblindness. 
+The brand of the assignment is nbSOME, that stands for nb designs social media. I wanted a "crazy" color in the logo. I tested with pink on green at the Adobe XD version, but I had to change the pink to purple when I started on the developing and testing for colorblindness. 
 The colors are fresh and young. And the typography I went for are fresh and easy to read. 
 
 
 ## Design prototype
 
-I used XD to make the design prototype. I made it to small screens, because social media is often used on the phone. 
+I used Adobe XD to make the design prototype. I made it to small screens, because social media is often used on the phone. After I had made the prototype I sent it to user testing. 
 
 
 ## User testing
 
 I sent out the two user test to the same four people. I only got answers from 2 of the four on both testes. 
+The #1 usertest was of the design prototype site that I made in adobe XD. 
+
+The #2 usertest was of the developed site that I had published via netlify.
 
 
 ### User test #1 demo from XD
+
+This is the message I sent out to my four testers: 
 
 Hello,  
 
@@ -146,6 +161,7 @@ Note: The profiles and posts have been created by other students, so unfortunate
 Link to the page, it should work on all types of devices:  
 Many thanks in advance for your help! 😊 
 
+
 #### User test #2 answer one
 
 - Clear first page, but should turn so that you have to press to expand the buttons (I have an account and Do not have an account), now they come with an expanded view first
@@ -167,6 +183,7 @@ Many thanks in advance for your help! 😊
 - I can't find anywhere to see which profiles I follow
 - Otherwise user-friendly and easy to navigate
 
+
 #### User test #2 answer two
 
 My profile:
@@ -181,9 +198,27 @@ Make a post:
 
 Otherwise, it was clear and easy to find. Bright and nice design!
 
+
 ## Developing
 
-When I started the developing it became clear to me that I couldn't use the pink color that I had in the XD demo. 
+When I started the developing it became clear to me that I couldn't use the pink color that I had in the Adobe XD demo, the color was not good on the page. I decided to use a purple color instead of. The user testers had given me feedback on the color on the Adobe XD version, so they where happy that the pink color disappeared. But i kept the pink color in the favicon, because the nb letters shows better. I also changed the green color in the footer and in the buttons, because the WCAG test of the page showed that the contrast ratio was not good enough. But I liked the darker green color I have used. 
+
+After I had imported the logo and created the navbar, I created the cards and started to retrieve information that was in the API on posts. The information was a little demotivating. 
+I had hoped that the students had left a slightly better title and body text on their posts. But you have to work with what you got, and after making the post detail page, I started on the Profile pages. There isn't much information on the profile API so it was okey to present. I decided to have a default banner and avatar picture on the profiles, because many profiles did not have either, and the page looks much better with som pictures on it. 
+
+Made a home page with a login og register page, in the beginning I had it so you could register with both noroff.no and stud.noroff.no because it was allowed in the API 
+documentation, but the assignment says that it is only for stud.noroff.no so I removed noroff.no as a posibility. I don't like that the API doesn't give you the option to log in straight after you've registered, but I think I did the best I could based on what's possible. When you log in you come to my profile page, I like that.
+
+Then I started on the my profile page. To update the content and present my posts. I also started on make a post. I desided to put it on the top of the latest post page, as a button with a Form. Both the title and the body have a max of 280 characters in the API. The only required field in the API is title, but I made body also required. 
+Made the edit post and delete post, before I started on the comments. 
+
+Comments are only made as a field to fill out and gets posted when you click enter. The reactions was a challenge. I started out with only one icon, but after testing it and after I saw how much information was in the API on it, I ended up being able to choose different icons, and to present all the icons that the post had received. I like the reaction function. All of the testers have comment on that there is no restriction on how many reaction you can make, but the API allows everything.
+
+At this point I started to link the profile and posts, so that when you are on a profile, you will see all the posts that the user has made and that you can go into the post to read more and see comments.
+
+After this I started on follow and unfollow buttons, where I list the followers and the following API information.
+
+Overall I am really happy with the developing, I got some really good user feedback that helped me on the way, most of the things they didn't like on the page I had developed, is things that I can't change because it is a limitation of the API.
 
 
 ## Resources
