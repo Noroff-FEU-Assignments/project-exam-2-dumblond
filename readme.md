@@ -1,11 +1,28 @@
 # Project exam 2 report
 
+## Table of Contents
+1. [Summary of the project](#1-summary-of-the-project)
+2. [Run the project locally](#2-run-the-project-locally)
+3. [Make a project plan](#3-make-a-project-plan)
+4. [API and audience research](#4-api-and-audience-research)
+5. [Styles](#5-styles)
+6. [Design prototype](#6-design-prototype)
+7. [User testing](#7-user-testing)
+    1. [User test #1 demo from XD](#71-user-test-1-demo-from-xd)
+        1. [User test #1 answer one](#711-user-test-1-answer-one)
+        2. [User test #1 answer two](#712-user-test-1-answer-two)
+    2. [User test #2 live page on netlify](#72-user-test-2-live-page-on-netlify)
+        1. [User test #2 answer one](#721-user-test-2-answer-one)
+        2. [User test #2 answer two](#722-user-test-2-answer-two)
+8. [Developing](#8-developing)
+9. [Resources](#9-resources)
+
+
+## 1. Summary of the project
+
 The assignments goal is to:
 
 *To take the skills learned over the last two years and take on an extensive project where the finished product should reflect the candidate's general development capabilities, in addition to visual and technical skills*
-
-
-## Summary of the project
 
 This has been a really challenging project. To take all the skills you have learned in the past four years ( I study part-time ) is a big task. 
 
@@ -21,7 +38,7 @@ We had to make some choices about which products to use, I have chosen to use th
 - Planning Applications, GitHub Projects
 
 
-## Run the project locally
+## 2. Run the project locally
 
 To run the project locally you first have to clone the repositary from github, and run
 
@@ -30,7 +47,7 @@ npm install
 npm run dev
 
 
-## Make a project plan
+## 3. Make a project plan
 
 After reading the aproved resources list I had to change from the program I normally make a project plan in, to one on the list. I decided to use github's solution, as it was most similar to the way I like to work.
 
@@ -42,25 +59,25 @@ The setup is in four phases
 4. Delivery (style guide, this report and delivery)
 
 
-## API and audience research
+## 4. API and audience research
 
 Users of the site are students, and since I myself am a student at Noroff, the user survey was really not that difficult. 
 I checked many social medias to see how the setup of the post/comments and profiles is, and I tried to take the function I liked with me too my own social media page. 
 I used postman to get the API information, to see what it contained of information. 
 
 
-## Styles
+## 5. Styles
 
 The brand of the assignment is nbSOME, that stands for nb designs social media. I wanted a "crazy" color in the logo. I tested with pink on green at the Adobe XD version, but I had to change the pink to purple when I started on the developing and testing for colorblindness. 
 The colors are fresh and young. And the typography I went for are fresh and easy to read. 
 
 
-## Design prototype
+## 6. Design prototype
 
 I used Adobe XD to make the design prototype. I made it to small screens, because social media is often used on the phone. After I had made the prototype I sent it to user testing. 
 
 
-## User testing
+## 7. User testing
 
 I sent out the two user test to the same four people. I only got answers from 2 of the four on both testes. 
 The #1 usertest was of the design prototype site that I made in adobe XD. 
@@ -68,7 +85,7 @@ The #1 usertest was of the design prototype site that I made in adobe XD.
 The #2 usertest was of the developed site that I had published via netlify.
 
 
-### User test #1 demo from XD
+### 7.1 User test #1 demo from XD
 
 This is the message I sent out to my four testers: 
 
@@ -94,7 +111,7 @@ Link to demo page:
 If something is unclear, just ask, and if you don't have the time/willingness to help, it's all right 😊
 
 
-#### User test #2 answer one
+#### 7.1.1 User test #1 answer one
 
 - The login page works well, easy to see where you have to press to proceed.
 - Nice colors - both the green and the pink. In the logo, pink writing on top of green may be difficult for some to read
@@ -108,7 +125,7 @@ If something is unclear, just ask, and if you don't have the time/willingness to
 - The text size is consistently good
 
 
-#### User test #2 answer two
+#### 7.1.2 User test #1 answer two
 
 - Functional like that, I think it's nice! - Plain and simple to understand where I have to press/click, and easy to find. so the comments I have relate to the design - the visuals themselves.
 - And I emphasize the things that I think can be improved, since I expect that you will benefit from them - not on what is nice.
@@ -123,7 +140,7 @@ or have some air between the buttons so that they are not right next to each oth
 - Hope this helps. Just ask if there is anything that is unclear, or something you are wondering about that I have not answered.
 
 
-### User test #2 live page on netlify
+### 7.2 User test #2 live page on netlify
 
 This is the message I sent out to my four testers:
 
@@ -162,7 +179,7 @@ Link to the page, it should work on all types of devices:
 Many thanks in advance for your help! 😊 
 
 
-#### User test #2 answer one
+#### 7.2.1 User test #2 answer one
 
 - Clear first page, but should turn so that you have to press to expand the buttons (I have an account and Do not have an account), now they come with an expanded view first
 - A bit confusing with the button "Do not have an account" in the middle, and at the top right there is "Register FORm" - they end up on the same registration page, right? Do you agree with one of them?
@@ -184,7 +201,7 @@ Many thanks in advance for your help! 😊
 - Otherwise user-friendly and easy to navigate
 
 
-#### User test #2 answer two
+#### 7.2.2. User test #2 answer two
 
 My profile:
 - Does not preserve the proportions in avatar image.
@@ -199,7 +216,7 @@ Make a post:
 Otherwise, it was clear and easy to find. Bright and nice design!
 
 
-## Developing
+## 8. Developing
 
 When I started the developing it became clear to me that I couldn't use the pink color that I had in the Adobe XD demo, the color was not good on the page. I decided to use a purple color instead of. The user testers had given me feedback on the color on the Adobe XD version, so they where happy that the pink color disappeared. But i kept the pink color in the favicon, because the nb letters shows better. I also changed the green color in the footer and in the buttons, because the WCAG test of the page showed that the contrast ratio was not good enough. But I liked the darker green color I have used. 
 
@@ -221,7 +238,7 @@ After this I started on follow and unfollow buttons, where I list the followers 
 Overall I am really happy with the developing, I got some really good user feedback that helped me on the way, most of the things they didn't like on the page I had developed, is things that I can't change because it is a limitation of the API.
 
 
-## Resources
+## 9. Resources
 
 - [API Guide](https://noroff-api-docs.netlify.app/social-endpoints/authentication)
 - [API Documentation](https://nf-api.onrender.com/docs/static/index.html)
