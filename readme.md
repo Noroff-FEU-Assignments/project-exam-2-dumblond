@@ -240,9 +240,9 @@ Overall I am really happy with the developing, I got some really good user feedb
 
 ## 9. Resources
 
-- [API Guide](https://noroff-api-docs.netlify.app/social-endpoints/authentication)
+- [API Guide](https://docs.noroff.dev/social-endpoints/authentication)
 - [API Documentation](https://nf-api.onrender.com/docs/static/index.html)
-- [Noroff API Documentation](https://noroff-api-docs.netlify.app/)
+- [Noroff API Documentation](https://docs.noroff.dev/)
 - [Bootstrap + react Documentation](https://react-bootstrap.netlify.app/)
 - [Bootstrap Documentation](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
 - [Google fonts](https://fonts.google.com/)
