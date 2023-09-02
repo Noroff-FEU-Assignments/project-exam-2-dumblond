@@ -6,7 +6,15 @@ import Loading from "../common/Loading";
 import DisplayMessage from "../common/DisplayMessage";
 import { API, profileAPI } from "../../constants/api";
 import Profile from "../posts/Profile";
-import { Breadcrumb, Button, Card, Container, Image } from "react-bootstrap";
+import {
+  Breadcrumb,
+  Button,
+  Card,
+  Col,
+  Container,
+  Image,
+  Row,
+} from "react-bootstrap";
 import Header from "../common/Header";
 import EditPost from "../forms/EditPost";
 import { formatDistance } from "date-fns";
@@ -85,6 +93,17 @@ function Me() {
         </Breadcrumb.Item>
       </Breadcrumb>
       <Header title="My profile" />
+      <Row>
+        <Col className="d-grid col-8 col-md-6 mx-auto">
+          <Link
+            to="/makepost"
+            className="btn btn-primary text-light m-3"
+            type="button"
+          >
+            Make a post
+          </Link>
+        </Col>
+      </Row>
       <div className="mb-4 d-flex gap-4 justify-content-center">
         <Following
           buttonText={` ${profile._count.followers} Followers`}
