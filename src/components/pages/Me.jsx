@@ -93,17 +93,6 @@ function Me() {
         </Breadcrumb.Item>
       </Breadcrumb>
       <Header title="My profile" />
-      <Row>
-        <Col className="d-grid col-8 col-md-6 mx-auto">
-          <Link
-            to="/makepost"
-            className="btn btn-primary text-light m-3"
-            type="button"
-          >
-            Make a post
-          </Link>
-        </Col>
-      </Row>
       <div className="mb-4 d-flex gap-4 justify-content-center">
         <Following
           buttonText={` ${profile._count.followers} Followers`}
@@ -117,6 +106,17 @@ function Me() {
         />
       </div>
       <Profile profile={profile} getProfile={getProfile} />
+      <Row>
+        <Col className="d-grid col-8 col-md-6 mx-auto">
+          <Link
+            to="/makepost"
+            className="btn btn-primary text-light m-3"
+            type="button"
+          >
+            Make a post
+          </Link>
+        </Col>
+      </Row>
       <Container>
         {profile.posts.length > 0 ? (
           <h2 className="text-center pt-4">{profile.name}&apos;s posts</h2>
