@@ -1,3 +1,77 @@
+# nb SOME
+
+![image](src/assets/logo.svg)
+
+A social media for students at Noroff.
+
+## Description
+
+Get in touch with your fellow students on a social media. 
+Register or log in and update the profile picture and banner. Make posts and comment or react on other students posts. 
+You can also follow/unfollow fellow students profile.
+
+
+## Built With
+
+- [API Guide](https://docs.noroff.dev/social-endpoints/authentication)
+- [API Documentation](https://nf-api.onrender.com/docs/static/index.html)
+- [Noroff API Documentation](https://docs.noroff.dev/)
+- [React](https://react.dev)
+- [Bootstrap + react Documentation](https://react-bootstrap.netlify.app/)
+- [Bootstrap Documentation](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
+- [Reactions package](https://github.com/charkour/react-reactions)
+
+## Getting Started
+
+### Installing
+
+
+To get the project started you need to:
+
+1. Clone the repo:
+
+```
+git clone git@github.com:Noroff-FEU-Assignments/project-exam-2-dumblond.git
+```
+
+2. Install the dependencies:
+
+```
+npm install
+```
+
+Open a browser on http://localhost:3000
+
+### Running
+
+
+To run the app, run the following commands:
+
+```
+npm run dev
+```
+
+## Contributing
+
+Anything isnt working?
+
+[Submit an issue](https://github.com/Noroff-FEU-Assignments/project-exam-2-dumblond/issues/new/choose)
+
+Fixed an error?
+Fork the project and submit a [Pull request](https://github.com/Noroff-FEU-Assignments/project-exam-2-dumblond/pulls)
+
+## Contact
+
+
+[My LinkedIn page](https://www.linkedin.com/in/anne-berit-lemika-68aa4b255/)
+
+[My github page](https://github.com/dumblond)
+
+[My homepage](https://nbdesign.no/index.html)
+
+
+---
+
 # Project exam 2 report
 
 ## Table of Contents
